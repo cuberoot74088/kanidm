@@ -1178,6 +1178,14 @@ pub async fn status(req: tide::Request<AppState>) -> tide::Result {
     Ok(res)
 }
 
+// For future openid integration
+pub async fn get_openid_configuration(_req: tide::Request<AppState>) -> tide::Result {
+    let mut res = tide::Response::new(200);
+    res.set_content_type("text/html;charset=utf-8");
+    res.set_body("");
+    Ok(res)
+}
+
 /*
 // For openssl
 struct TlsListener {
@@ -1301,6 +1309,8 @@ pub fn create_https_server(
         fernet_handle,
     });
 
+    // tide::log::with_level(tide::log::LevelFilter::Debug);
+
     // Add middleware?
     tserver.with(tide::log::LogMiddleware::new()).with(
         tide::sessions::SessionMiddleware::new(tide::sessions::MemoryStore::new(), cookie_key)
@@ -1322,6 +1332,9 @@ pub fn create_https_server(
             );
         })?;
     tserver.at("/status").get(self::status);
+
+    let mut well_known = tserver.at("/well-known");
+    well_known.at("/openid-configuration").get(get_openid_configuration);
 
     let mut raw_route = tserver.at("/v1/raw");
     raw_route.at("/create").post(create);
