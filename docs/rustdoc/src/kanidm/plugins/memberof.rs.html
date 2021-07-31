@@ -1569,7 +1569,6 @@
 <span id="1567">1567</span>
 <span id="1568">1568</span>
 <span id="1569">1569</span>
-<span id="1570">1570</span>
 </pre><pre class="rust">
 <span class="comment">// Member Of</span>
 <span class="comment">//</span>
@@ -1585,14 +1584,13 @@
 
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::entry</span>::{<span class="ident">Entry</span>, <span class="ident">EntryCommitted</span>, <span class="ident">EntryInvalid</span>, <span class="ident">EntrySealed</span>};
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::event</span>::{<span class="ident">CreateEvent</span>, <span class="ident">DeleteEvent</span>, <span class="ident">ModifyEvent</span>};
-<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::prelude</span>::<span class="kw-2">*</span>;
-<span class="comment">// use crate::modify::{Modify, ModifyList};</span>
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::plugins::Plugin</span>;
+<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::prelude</span>::<span class="kw-2">*</span>;
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::value</span>::{<span class="ident">PartialValue</span>, <span class="ident">Value</span>};
+<span class="kw">use</span> <span class="kw">crate</span><span class="ident">::valueset::ValueSet</span>;
 <span class="kw">use</span> <span class="ident">kanidm_proto::v1</span>::{<span class="ident">ConsistencyError</span>, <span class="ident">OperationError</span>};
 
 <span class="kw">use</span> <span class="ident">hashbrown::HashMap</span>;
-<span class="kw">use</span> <span class="ident">std::collections::BTreeSet</span>;
 <span class="kw">use</span> <span class="ident">uuid::Uuid</span>;
 
 <span class="macro">lazy_static!</span> {
@@ -1924,7 +1922,7 @@
             };
             <span class="comment">// for all direct -&gt; add uuid to map</span>
 
-            <span class="kw">let</span> <span class="ident">d_groups_set</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw">_</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">direct_memberof</span>
+            <span class="kw">let</span> <span class="ident">d_groups_set</span>: <span class="ident">ValueSet</span> <span class="op">=</span> <span class="ident">direct_memberof</span>
                 .<span class="ident">iter</span>()
                 .<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="ident">Value::new_refer</span>(<span class="kw-2">*</span><span class="ident">e</span>.<span class="ident">get_uuid</span>()))
                 .<span class="ident">collect</span>();
