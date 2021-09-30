@@ -1,6 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `kanidmd/src/lib/access.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>access.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings"></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg">
-<link rel="alternate icon" type="image/png" href="../../favicon-16x16.png">
-<link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../kanidm/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img src="../../brush.svg" width="18" height="18" alt="Pick another theme!"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input" name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img src="../../wheel.svg" width="18" height="18" alt="Change settings"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="rustdoc"><meta name="description" content="Source of the Rust file `kanidmd&#x2F;src&#x2F;lib&#x2F;access.rs`."><meta name="keywords" content="rust, rustlang, rust-lang"><title>access.rs - source</title><link rel="stylesheet" type="text/css" href="../../normalize.css"><link rel="stylesheet" type="text/css" href="../../rustdoc.css" id="mainThemeStyle"><link rel="stylesheet" type="text/css" href="../../light.css"  id="themeStyle"><link rel="stylesheet" type="text/css" href="../../dark.css" disabled ><link rel="stylesheet" type="text/css" href="../../ayu.css" disabled ><script id="default-settings" ></script><script src="../../storage.js"></script><script src="../../crates.js"></script><noscript><link rel="stylesheet" href="../../noscript.css"></noscript><link rel="icon" type="image/svg+xml" href="../../favicon.svg"><link rel="alternate icon" type="image/png" href="../../favicon-16x16.png"><link rel="alternate icon" type="image/png" href="../../favicon-32x32.png"><style type="text/css">#crate-search{background-image:url("../../down-arrow.svg");}</style></head><body class="rustdoc source"><!--[if lte IE 11]><div class="warning">This old browser is unsupported and will most likely display funky things.</div><![endif]--><nav class="sidebar"><div class="sidebar-menu" role="button">&#9776;</div><a href='../../kanidm/index.html'><div class='logo-container rust-logo'><img src='../../rust-logo.png' alt='logo'></div></a></nav><div class="theme-picker"><button id="theme-picker" aria-label="Pick another theme!" aria-haspopup="menu" title="themes"><img width="18" height="18" alt="Pick another theme!" src="../../brush.svg"></button><div id="theme-choices" role="menu"></div></div><nav class="sub"><form class="search-form"><div class="search-container"><div><select id="crate-search"><option value="All crates">All crates</option></select><input class="search-input"name="search" disabled autocomplete="off" spellcheck="false" placeholder="Click or press ‘S’ to search, ‘?’ for more options…" type="search"></div><button type="button" id="help-button" title="help">?</button><a id="settings-menu" href="../../settings.html" title="settings"><img width="18" height="18" alt="Change settings" src="../../wheel.svg"></a></div></form></nav><section id="main" class="content"><div class="example-wrap"><pre class="line-numbers"><span id="1">   1</span>
 <span id="2">   2</span>
 <span id="3">   3</span>
 <span id="4">   4</span>
@@ -2329,138 +2327,6 @@
 <span id="2327">2327</span>
 <span id="2328">2328</span>
 <span id="2329">2329</span>
-<span id="2330">2330</span>
-<span id="2331">2331</span>
-<span id="2332">2332</span>
-<span id="2333">2333</span>
-<span id="2334">2334</span>
-<span id="2335">2335</span>
-<span id="2336">2336</span>
-<span id="2337">2337</span>
-<span id="2338">2338</span>
-<span id="2339">2339</span>
-<span id="2340">2340</span>
-<span id="2341">2341</span>
-<span id="2342">2342</span>
-<span id="2343">2343</span>
-<span id="2344">2344</span>
-<span id="2345">2345</span>
-<span id="2346">2346</span>
-<span id="2347">2347</span>
-<span id="2348">2348</span>
-<span id="2349">2349</span>
-<span id="2350">2350</span>
-<span id="2351">2351</span>
-<span id="2352">2352</span>
-<span id="2353">2353</span>
-<span id="2354">2354</span>
-<span id="2355">2355</span>
-<span id="2356">2356</span>
-<span id="2357">2357</span>
-<span id="2358">2358</span>
-<span id="2359">2359</span>
-<span id="2360">2360</span>
-<span id="2361">2361</span>
-<span id="2362">2362</span>
-<span id="2363">2363</span>
-<span id="2364">2364</span>
-<span id="2365">2365</span>
-<span id="2366">2366</span>
-<span id="2367">2367</span>
-<span id="2368">2368</span>
-<span id="2369">2369</span>
-<span id="2370">2370</span>
-<span id="2371">2371</span>
-<span id="2372">2372</span>
-<span id="2373">2373</span>
-<span id="2374">2374</span>
-<span id="2375">2375</span>
-<span id="2376">2376</span>
-<span id="2377">2377</span>
-<span id="2378">2378</span>
-<span id="2379">2379</span>
-<span id="2380">2380</span>
-<span id="2381">2381</span>
-<span id="2382">2382</span>
-<span id="2383">2383</span>
-<span id="2384">2384</span>
-<span id="2385">2385</span>
-<span id="2386">2386</span>
-<span id="2387">2387</span>
-<span id="2388">2388</span>
-<span id="2389">2389</span>
-<span id="2390">2390</span>
-<span id="2391">2391</span>
-<span id="2392">2392</span>
-<span id="2393">2393</span>
-<span id="2394">2394</span>
-<span id="2395">2395</span>
-<span id="2396">2396</span>
-<span id="2397">2397</span>
-<span id="2398">2398</span>
-<span id="2399">2399</span>
-<span id="2400">2400</span>
-<span id="2401">2401</span>
-<span id="2402">2402</span>
-<span id="2403">2403</span>
-<span id="2404">2404</span>
-<span id="2405">2405</span>
-<span id="2406">2406</span>
-<span id="2407">2407</span>
-<span id="2408">2408</span>
-<span id="2409">2409</span>
-<span id="2410">2410</span>
-<span id="2411">2411</span>
-<span id="2412">2412</span>
-<span id="2413">2413</span>
-<span id="2414">2414</span>
-<span id="2415">2415</span>
-<span id="2416">2416</span>
-<span id="2417">2417</span>
-<span id="2418">2418</span>
-<span id="2419">2419</span>
-<span id="2420">2420</span>
-<span id="2421">2421</span>
-<span id="2422">2422</span>
-<span id="2423">2423</span>
-<span id="2424">2424</span>
-<span id="2425">2425</span>
-<span id="2426">2426</span>
-<span id="2427">2427</span>
-<span id="2428">2428</span>
-<span id="2429">2429</span>
-<span id="2430">2430</span>
-<span id="2431">2431</span>
-<span id="2432">2432</span>
-<span id="2433">2433</span>
-<span id="2434">2434</span>
-<span id="2435">2435</span>
-<span id="2436">2436</span>
-<span id="2437">2437</span>
-<span id="2438">2438</span>
-<span id="2439">2439</span>
-<span id="2440">2440</span>
-<span id="2441">2441</span>
-<span id="2442">2442</span>
-<span id="2443">2443</span>
-<span id="2444">2444</span>
-<span id="2445">2445</span>
-<span id="2446">2446</span>
-<span id="2447">2447</span>
-<span id="2448">2448</span>
-<span id="2449">2449</span>
-<span id="2450">2450</span>
-<span id="2451">2451</span>
-<span id="2452">2452</span>
-<span id="2453">2453</span>
-<span id="2454">2454</span>
-<span id="2455">2455</span>
-<span id="2456">2456</span>
-<span id="2457">2457</span>
-<span id="2458">2458</span>
-<span id="2459">2459</span>
-<span id="2460">2460</span>
-<span id="2461">2461</span>
 </pre><pre class="rust">
 <span class="doccomment">//! Access Control Profiles</span>
 <span class="doccomment">//!</span>
@@ -2487,6 +2353,7 @@
 <span class="comment">// use hashbrown::HashSet;</span>
 <span class="kw">use</span> <span class="ident">std::cell::Cell</span>;
 <span class="kw">use</span> <span class="ident">std::ops::DerefMut</span>;
+<span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 <span class="kw">use</span> <span class="ident">uuid::Uuid</span>;
 
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::entry</span>::{<span class="ident">Entry</span>, <span class="ident">EntryCommitted</span>, <span class="ident">EntryInit</span>, <span class="ident">EntryNew</span>, <span class="ident">EntryReduced</span>, <span class="ident">EntrySealed</span>};
@@ -2497,6 +2364,8 @@
 
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::event</span>::{<span class="ident">CreateEvent</span>, <span class="ident">DeleteEvent</span>, <span class="ident">ModifyEvent</span>, <span class="ident">SearchEvent</span>};
 <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::identity</span>::{<span class="ident">IdentType</span>, <span class="ident">IdentityId</span>};
+
+<span class="kw">use</span> <span class="ident">tracing::trace</span>;
 
 <span class="comment">// const ACP_RELATED_SEARCH_CACHE_MAX: usize = 2048;</span>
 <span class="comment">// const ACP_RELATED_SEARCH_CACHE_LOCAL: usize = 16;</span>
@@ -2524,12 +2393,11 @@
 
 <span class="kw">impl</span> <span class="ident">AccessControlSearch</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_from</span>(
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">QueryServerWriteTransaction</span>,
         <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">value</span>.<span class="ident">attribute_equality</span>(<span class="string">&quot;class&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">CLASS_ACS</span>) {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;class access_control_search not present.&quot;</span>);
+            <span class="macro">admin_error!</span>(<span class="string">&quot;class access_control_search not present.&quot;</span>);
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">OperationError::InvalidAcpState</span>(
                 <span class="string">&quot;Missing access_control_search&quot;</span>.<span class="ident">to_string</span>(),
             ));
@@ -2538,13 +2406,13 @@
         <span class="kw">let</span> <span class="ident">attrs</span> <span class="op">=</span> <span class="ident">value</span>
             .<span class="ident">get_ava_as_str</span>(<span class="string">&quot;acp_search_attr&quot;</span>)
             .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
-                <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;Missing acp_search_attr&quot;</span>);
+                <span class="macro">admin_error!</span>(<span class="string">&quot;Missing acp_search_attr&quot;</span>);
                 <span class="ident">OperationError::InvalidAcpState</span>(<span class="string">&quot;Missing acp_search_attr&quot;</span>.<span class="ident">to_string</span>())
             })<span class="question-mark">?</span>
             .<span class="ident">map</span>(<span class="ident">AttrString::from</span>)
             .<span class="ident">collect</span>();
 
-        <span class="kw">let</span> <span class="ident">acp</span> <span class="op">=</span> <span class="ident">AccessControlProfile::try_from</span>(<span class="ident">audit</span>, <span class="ident">qs</span>, <span class="ident">value</span>)<span class="question-mark">?</span>;
+        <span class="kw">let</span> <span class="ident">acp</span> <span class="op">=</span> <span class="ident">AccessControlProfile::try_from</span>(<span class="ident">qs</span>, <span class="ident">value</span>)<span class="question-mark">?</span>;
 
         <span class="prelude-val">Ok</span>(<span class="ident">AccessControlSearch</span> { <span class="ident">acp</span>, <span class="ident">attrs</span> })
     }
@@ -2579,19 +2447,18 @@
 
 <span class="kw">impl</span> <span class="ident">AccessControlDelete</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_from</span>(
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">QueryServerWriteTransaction</span>,
         <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">value</span>.<span class="ident">attribute_equality</span>(<span class="string">&quot;class&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">CLASS_ACD</span>) {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;class access_control_delete not present.&quot;</span>);
+            <span class="macro">admin_error!</span>(<span class="string">&quot;class access_control_delete not present.&quot;</span>);
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">OperationError::InvalidAcpState</span>(
                 <span class="string">&quot;Missing access_control_delete&quot;</span>.<span class="ident">to_string</span>(),
             ));
         }
 
         <span class="prelude-val">Ok</span>(<span class="ident">AccessControlDelete</span> {
-            <span class="ident">acp</span>: <span class="ident">AccessControlProfile::try_from</span>(<span class="ident">audit</span>, <span class="ident">qs</span>, <span class="ident">value</span>)<span class="question-mark">?</span>,
+            <span class="ident">acp</span>: <span class="ident">AccessControlProfile::try_from</span>(<span class="ident">qs</span>, <span class="ident">value</span>)<span class="question-mark">?</span>,
         })
     }
 
@@ -2622,12 +2489,11 @@
 
 <span class="kw">impl</span> <span class="ident">AccessControlCreate</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_from</span>(
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">QueryServerWriteTransaction</span>,
         <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">value</span>.<span class="ident">attribute_equality</span>(<span class="string">&quot;class&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">CLASS_ACC</span>) {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;class access_control_create not present.&quot;</span>);
+            <span class="macro">admin_error!</span>(<span class="string">&quot;class access_control_create not present.&quot;</span>);
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">OperationError::InvalidAcpState</span>(
                 <span class="string">&quot;Missing access_control_create&quot;</span>.<span class="ident">to_string</span>(),
             ));
@@ -2644,7 +2510,7 @@
             .<span class="ident">unwrap_or_else</span>(<span class="ident">Vec::new</span>);
 
         <span class="prelude-val">Ok</span>(<span class="ident">AccessControlCreate</span> {
-            <span class="ident">acp</span>: <span class="ident">AccessControlProfile::try_from</span>(<span class="ident">audit</span>, <span class="ident">qs</span>, <span class="ident">value</span>)<span class="question-mark">?</span>,
+            <span class="ident">acp</span>: <span class="ident">AccessControlProfile::try_from</span>(<span class="ident">qs</span>, <span class="ident">value</span>)<span class="question-mark">?</span>,
             <span class="ident">classes</span>,
             <span class="ident">attrs</span>,
         })
@@ -2682,12 +2548,11 @@
 
 <span class="kw">impl</span> <span class="ident">AccessControlModify</span> {
     <span class="kw">pub</span> <span class="kw">fn</span> <span class="ident">try_from</span>(
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">QueryServerWriteTransaction</span>,
         <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="kw">if</span> <span class="op">!</span><span class="ident">value</span>.<span class="ident">attribute_equality</span>(<span class="string">&quot;class&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">CLASS_ACM</span>) {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;class access_control_modify not present.&quot;</span>);
+            <span class="macro">admin_error!</span>(<span class="string">&quot;class access_control_modify not present.&quot;</span>);
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">OperationError::InvalidAcpState</span>(
                 <span class="string">&quot;Missing access_control_modify&quot;</span>.<span class="ident">to_string</span>(),
             ));
@@ -2709,7 +2574,7 @@
             .<span class="ident">unwrap_or_else</span>(<span class="ident">Vec::new</span>);
 
         <span class="prelude-val">Ok</span>(<span class="ident">AccessControlModify</span> {
-            <span class="ident">acp</span>: <span class="ident">AccessControlProfile::try_from</span>(<span class="ident">audit</span>, <span class="ident">qs</span>, <span class="ident">value</span>)<span class="question-mark">?</span>,
+            <span class="ident">acp</span>: <span class="ident">AccessControlProfile::try_from</span>(<span class="ident">qs</span>, <span class="ident">value</span>)<span class="question-mark">?</span>,
             <span class="ident">classes</span>,
             <span class="ident">presattrs</span>,
             <span class="ident">remattrs</span>,
@@ -2759,13 +2624,12 @@
 
 <span class="kw">impl</span> <span class="ident">AccessControlProfile</span> {
     <span class="kw">fn</span> <span class="ident">try_from</span>(
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">QueryServerWriteTransaction</span>,
         <span class="ident">value</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="self">Self</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="comment">// Assert we have class access_control_profile</span>
         <span class="kw">if</span> <span class="op">!</span><span class="ident">value</span>.<span class="ident">attribute_equality</span>(<span class="string">&quot;class&quot;</span>, <span class="kw-2">&amp;</span><span class="ident">CLASS_ACP</span>) {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;class access_control_profile not present.&quot;</span>);
+            <span class="macro">admin_error!</span>(<span class="string">&quot;class access_control_profile not present.&quot;</span>);
             <span class="kw">return</span> <span class="prelude-val">Err</span>(<span class="ident">OperationError::InvalidAcpState</span>(
                 <span class="string">&quot;Missing access_control_profile&quot;</span>.<span class="ident">to_string</span>(),
             ));
@@ -2775,7 +2639,7 @@
         <span class="kw">let</span> <span class="ident">name</span> <span class="op">=</span> <span class="ident">value</span>
             .<span class="ident">get_ava_single_str</span>(<span class="string">&quot;name&quot;</span>)
             .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
-                <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;Missing name&quot;</span>);
+                <span class="macro">admin_error!</span>(<span class="string">&quot;Missing name&quot;</span>);
                 <span class="ident">OperationError::InvalidAcpState</span>(<span class="string">&quot;Missing name&quot;</span>.<span class="ident">to_string</span>())
             })<span class="question-mark">?</span>
             .<span class="ident">to_string</span>();
@@ -2787,7 +2651,7 @@
             <span class="comment">// .map(|pf| pf.clone())</span>
             .<span class="ident">cloned</span>()
             .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
-                <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;Missing acp_receiver&quot;</span>);
+                <span class="macro">admin_error!</span>(<span class="string">&quot;Missing acp_receiver&quot;</span>);
                 <span class="ident">OperationError::InvalidAcpState</span>(<span class="string">&quot;Missing acp_receiver&quot;</span>.<span class="ident">to_string</span>())
             })<span class="question-mark">?</span>;
         <span class="comment">// targetscope, and turn to real filter</span>
@@ -2796,28 +2660,28 @@
             <span class="comment">// .map(|pf| pf.clone())</span>
             .<span class="ident">cloned</span>()
             .<span class="ident">ok_or_else</span>(<span class="op">|</span><span class="op">|</span> {
-                <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;Missing acp_targetscope&quot;</span>);
+                <span class="macro">admin_error!</span>(<span class="string">&quot;Missing acp_targetscope&quot;</span>);
                 <span class="ident">OperationError::InvalidAcpState</span>(<span class="string">&quot;Missing acp_targetscope&quot;</span>.<span class="ident">to_string</span>())
             })<span class="question-mark">?</span>;
 
         <span class="kw">let</span> <span class="ident">ident</span> <span class="op">=</span> <span class="ident">Identity::from_internal</span>();
 
-        <span class="kw">let</span> <span class="ident">receiver_i</span> <span class="op">=</span> <span class="ident">Filter::from_rw</span>(<span class="ident">audit</span>, <span class="kw-2">&amp;</span><span class="ident">ident</span>, <span class="kw-2">&amp;</span><span class="ident">receiver_f</span>, <span class="ident">qs</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;Receiver validation failed {:?}&quot;</span>, <span class="ident">e</span>);
+        <span class="kw">let</span> <span class="ident">receiver_i</span> <span class="op">=</span> <span class="ident">Filter::from_rw</span>(<span class="kw-2">&amp;</span><span class="ident">ident</span>, <span class="kw-2">&amp;</span><span class="ident">receiver_f</span>, <span class="ident">qs</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
+            <span class="macro">admin_error!</span>(<span class="string">&quot;Receiver validation failed {:?}&quot;</span>, <span class="ident">e</span>);
             <span class="ident">e</span>
         })<span class="question-mark">?</span>;
         <span class="kw">let</span> <span class="ident">receiver</span> <span class="op">=</span> <span class="ident">receiver_i</span>.<span class="ident">validate</span>(<span class="ident">qs</span>.<span class="ident">get_schema</span>()).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;acp_receiver Schema Violation {:?}&quot;</span>, <span class="ident">e</span>);
+            <span class="macro">admin_error!</span>(<span class="string">&quot;acp_receiver Schema Violation {:?}&quot;</span>, <span class="ident">e</span>);
             <span class="ident">OperationError::SchemaViolation</span>(<span class="ident">e</span>)
         })<span class="question-mark">?</span>;
 
-        <span class="kw">let</span> <span class="ident">targetscope_i</span> <span class="op">=</span> <span class="ident">Filter::from_rw</span>(<span class="ident">audit</span>, <span class="kw-2">&amp;</span><span class="ident">ident</span>, <span class="kw-2">&amp;</span><span class="ident">targetscope_f</span>, <span class="ident">qs</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;Targetscope validation failed {:?}&quot;</span>, <span class="ident">e</span>);
+        <span class="kw">let</span> <span class="ident">targetscope_i</span> <span class="op">=</span> <span class="ident">Filter::from_rw</span>(<span class="kw-2">&amp;</span><span class="ident">ident</span>, <span class="kw-2">&amp;</span><span class="ident">targetscope_f</span>, <span class="ident">qs</span>).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
+            <span class="macro">admin_error!</span>(<span class="string">&quot;Targetscope validation failed {:?}&quot;</span>, <span class="ident">e</span>);
             <span class="ident">e</span>
         })<span class="question-mark">?</span>;
 
         <span class="kw">let</span> <span class="ident">targetscope</span> <span class="op">=</span> <span class="ident">targetscope_i</span>.<span class="ident">validate</span>(<span class="ident">qs</span>.<span class="ident">get_schema</span>()).<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;acp_targetscope Schema Violation {:?}&quot;</span>, <span class="ident">e</span>);
+            <span class="macro">admin_error!</span>(<span class="string">&quot;acp_targetscope Schema Violation {:?}&quot;</span>, <span class="ident">e</span>);
             <span class="ident">OperationError::SchemaViolation</span>(<span class="ident">e</span>)
         })<span class="question-mark">?</span>;
 
@@ -2860,9 +2724,9 @@
         <span class="kw-2">&amp;</span><span class="self">self</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">ARCacheReadTxn</span><span class="op">&lt;</span><span class="lifetime">&#39;a</span>, (<span class="ident">IdentityId</span>, <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">FilterValid</span><span class="op">&gt;</span>), <span class="ident">Filter</span><span class="op">&lt;</span><span class="ident">FilterValidResolved</span><span class="op">&gt;</span><span class="op">&gt;</span>;
 
+    <span class="comment">// ! TRACING INTEGRATED</span>
     <span class="kw">fn</span> <span class="ident">search_related_acp</span><span class="op">&lt;</span><span class="lifetime">&#39;b</span><span class="op">&gt;</span>(
         <span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="self">self</span>,
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">rec_entry</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span>,
         <span class="ident">se</span>: <span class="kw-2">&amp;</span><span class="ident">SearchEvent</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="lifetime">&#39;b</span> <span class="ident">AccessControlSearch</span><span class="op">&gt;</span> {
@@ -2884,7 +2748,7 @@
 
         <span class="comment">/*
         if let Some(acs_uuids) = acp_related_search_cache.get(rec_entry.get_uuid()) {
-            lperf_trace_segment!(audit, &quot;access::search_related_acp&lt;cached&gt;&quot;, || {
+            lperf_trace_segment!( &quot;access::search_related_acp&lt;cached&gt;&quot;, || {
                 // If we have a cache, we should look here first for all the uuids that match
 
                 // could this be a better algo?
@@ -2897,7 +2761,7 @@
         */</span>
         <span class="comment">// else, we calculate this, and then stash/cache the uuids.</span>
         <span class="kw">let</span> <span class="ident">related_acp</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">AccessControlSearch</span><span class="op">&gt;</span> <span class="op">=</span>
-            <span class="macro">lperf_trace_segment!</span>(<span class="ident">audit</span>, <span class="string">&quot;access::search_related_acp&lt;uncached&gt;&quot;</span>, <span class="op">|</span><span class="op">|</span> {
+            <span class="macro">spanned!</span>(<span class="string">&quot;access::search_related_acp&lt;uncached&gt;&quot;</span>, {
                 <span class="ident">search_state</span>
                     .<span class="ident">iter</span>()
                     <span class="comment">// .filter_map(|(_, acs)| {</span>
@@ -2924,10 +2788,9 @@
                         ) {
                             <span class="prelude-val">Ok</span>(<span class="ident">f_res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">rec_entry</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>),
                             <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                                <span class="macro">ladmin_error!</span>(
-                                    <span class="ident">audit</span>,
-                                    <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
-                                    <span class="ident">e</span>
+                                <span class="macro">admin_error!</span>(
+                                    <span class="question-mark">?</span><span class="ident">e</span>,
+                                    <span class="string">&quot;A internal filter/event was passed for resolution!?!?&quot;</span>
                                 );
                                 <span class="bool-val">false</span>
                             }
@@ -2950,28 +2813,23 @@
     <span class="comment">// Contains all the way to eval acps to entries</span>
     <span class="kw">fn</span> <span class="ident">search_filter_entries</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">se</span>: <span class="kw-2">&amp;</span><span class="ident">SearchEvent</span>,
-        <span class="ident">entries</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span>,
-    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
+        <span class="ident">entries</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">EntrySealedCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+    ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">EntrySealedCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="comment">// If this is an internal search, return our working set.</span>
         <span class="kw">let</span> <span class="ident">rec_entry</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">se</span>.<span class="ident">ident</span>.<span class="ident">origin</span> {
             <span class="ident">IdentType::Internal</span> <span class="op">=</span><span class="op">&gt;</span> {
-                <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;Internal operation, bypassing access check&quot;</span>);
+                <span class="macro">trace!</span>(<span class="string">&quot;Internal operation, bypassing access check&quot;</span>);
                 <span class="comment">// No need to check ACS</span>
                 <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">entries</span>);
             }
             <span class="ident">IdentType::User</span>(<span class="ident">u</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">u</span>.<span class="ident">entry</span>,
         };
-        <span class="macro">lperf_segment!</span>(<span class="ident">audit</span>, <span class="string">&quot;access::search_filter_entries&quot;</span>, <span class="op">|</span><span class="op">|</span> {
-            <span class="macro">ltrace!</span>(
-                <span class="ident">audit</span>,
-                <span class="string">&quot;Access check for search (filter) event: {}&quot;</span>,
-                <span class="ident">se</span>.<span class="ident">ident</span>
-            );
+        <span class="macro">spanned!</span>(<span class="string">&quot;access::search_filter_entries&quot;</span>, {
+            <span class="macro">trace!</span>(<span class="ident">event</span> <span class="op">=</span> <span class="op">%</span><span class="ident">se</span>.<span class="ident">ident</span>, <span class="string">&quot;Access check for search (filter) event&quot;</span>);
 
             <span class="comment">// First get the set of acps that apply to this receiver</span>
-            <span class="kw">let</span> <span class="ident">related_acp</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">search_related_acp</span>(<span class="ident">audit</span>, <span class="ident">rec_entry</span>, <span class="ident">se</span>);
+            <span class="kw">let</span> <span class="ident">related_acp</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">search_related_acp</span>(<span class="ident">rec_entry</span>, <span class="ident">se</span>);
             <span class="kw">let</span> <span class="ident">acp_resolve_filter_cache</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_acp_resolve_filter_cache</span>();
 
             <span class="kw">let</span> <span class="ident">related_acp</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="kw-2">&amp;</span><span class="ident">AccessControlSearch</span>, <span class="kw">_</span>)<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">related_acp</span>
@@ -2980,10 +2838,9 @@
                     (<span class="kw-2">&amp;</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">targetscope</span>)
                         .<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">se</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>))
                         .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-                            <span class="macro">ladmin_error!</span>(
-                                <span class="ident">audit</span>,
-                                <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
-                                <span class="ident">e</span>
+                            <span class="macro">admin_error!</span>(
+                                <span class="question-mark">?</span><span class="ident">e</span>,
+                                <span class="string">&quot;A internal filter/event was passed for resolution!?!?&quot;</span>
                             );
                             <span class="ident">e</span>
                         })
@@ -2994,7 +2851,7 @@
 
             <span class="comment">/*
             related_acp.iter().for_each(|racp| {
-                lsecurity_access!(audit, &quot;Event Origin Related acs -&gt; {:?}&quot;, racp.acp.name);
+                security_access!(acs = ?racp.acp.name, &quot;Event Origin Related acs&quot;);
             });
             */</span>
 
@@ -3003,96 +2860,85 @@
             <span class="kw">let</span> <span class="ident">requested_attrs</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">se</span>.<span class="ident">filter_orig</span>.<span class="ident">get_attr_set</span>();
 
             <span class="comment">// For each entry</span>
-            <span class="kw">let</span> <span class="ident">allowed_entries</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">lperf_segment!</span>(
-                <span class="ident">audit</span>,
+            <span class="kw">let</span> <span class="ident">allowed_entries</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">EntrySealedCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">spanned!</span>(
                 <span class="string">&quot;access::search_filter_entries&lt;allowed_entries&gt;&quot;</span>,
-                <span class="op">|</span><span class="op">|</span> {
+                {
                     <span class="ident">entries</span>
-                        .<span class="ident">into_iter</span>()
-                        .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-                            <span class="comment">// For each acp</span>
-                            <span class="kw">let</span> <span class="ident">allowed_attrs</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">related_acp</span>
-                                .<span class="ident">iter</span>()
-                                .<span class="ident">filter_map</span>(<span class="op">|</span>(<span class="ident">acs</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
-                                    <span class="comment">// if it applies</span>
-                                    <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>) {
-                                        <span class="macro">lsecurity_access!</span>(
-                                            <span class="ident">audit</span>,
-                                            <span class="string">&quot;entry {:?} matches acs {}&quot;</span>,
-                                            <span class="ident">e</span>.<span class="ident">get_uuid</span>(),
-                                            <span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">name</span>
-                                        );
-                                        <span class="comment">// add search_attrs to allowed.</span>
-                                        <span class="prelude-val">Some</span>(<span class="ident">acs</span>.<span class="ident">attrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>()))
-                                    } <span class="kw">else</span> {
-                                        <span class="macro">ltrace!</span>(
-                                            <span class="ident">audit</span>,
-                                            <span class="string">&quot;entry {:?} DOES NOT match acs {}&quot;</span>,
-                                            <span class="ident">e</span>.<span class="ident">get_uuid</span>(),
-                                            <span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">name</span>
-                                        );
-                                        <span class="prelude-val">None</span>
-                                    }
-                                })
-                                .<span class="ident">flatten</span>()
-                                .<span class="ident">collect</span>();
+                                    .<span class="ident">into_iter</span>()
+                                    .<span class="ident">filter</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
+                                        <span class="comment">// For each acp</span>
+                                        <span class="kw">let</span> <span class="ident">allowed_attrs</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">related_acp</span>
+                                            .<span class="ident">iter</span>()
+                                            .<span class="ident">filter_map</span>(<span class="op">|</span>(<span class="ident">acs</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
+                                                <span class="comment">// if it applies</span>
+                                                <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="ident">f_res</span>) {
+                                                    <span class="macro">security_access!</span>(<span class="ident">entry</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">e</span>.<span class="ident">get_uuid</span>(), <span class="ident">acs</span> <span class="op">=</span> <span class="op">%</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">name</span>, <span class="string">&quot;entry matches acs&quot;</span>);
+                                                    <span class="comment">// add search_attrs to allowed.</span>
+                                                    <span class="prelude-val">Some</span>(<span class="ident">acs</span>.<span class="ident">attrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>()))
+                                                } <span class="kw">else</span> {
+                                                    <span class="macro">trace!</span>(<span class="ident">entry</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">e</span>.<span class="ident">get_uuid</span>(), <span class="ident">acs</span> <span class="op">=</span> <span class="op">%</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">name</span>, <span class="string">&quot;entry DOES NOT match acs&quot;</span>); <span class="comment">// should this be `security_access`?</span>
+                                                    <span class="prelude-val">None</span>
+                                                }
+                                            })
+                                            .<span class="ident">flatten</span>()
+                                            .<span class="ident">collect</span>();
 
-                            <span class="macro">lsecurity_access!</span>(
-                                <span class="ident">audit</span>,
-                                <span class="string">&quot;requested filter attributes --&gt; {:?} allowed attributes   --&gt; {:?}&quot;</span>,
-                                <span class="ident">requested_attrs</span>,
-                                <span class="ident">allowed_attrs</span>
-                            );
+                                        <span class="macro">security_access!</span>(
+                                            <span class="ident">requested</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">requested_attrs</span>,
+                                            <span class="ident">allows</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">allowed_attrs</span>,
+                                            <span class="string">&quot;attributes&quot;</span>,
+                                        );
 
-                            <span class="comment">// is attr set a subset of allowed set?</span>
-                            <span class="comment">// true -&gt; entry is allowed in result set</span>
-                            <span class="comment">// false -&gt; the entry is not allowed to be searched by this entity, so is</span>
-                            <span class="comment">//          excluded.</span>
-                            <span class="kw">let</span> <span class="ident">decision</span> <span class="op">=</span> <span class="ident">requested_attrs</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_attrs</span>);
-                            <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;search attr decision --&gt; {:?}&quot;</span>, <span class="ident">decision</span>);
-                            <span class="ident">decision</span>
-                        })
-                        .<span class="ident">collect</span>()
+                                        <span class="comment">// is attr set a subset of allowed set?</span>
+                                        <span class="comment">// true -&gt; entry is allowed in result set</span>
+                                        <span class="comment">// false -&gt; the entry is not allowed to be searched by this entity, so is</span>
+                                        <span class="comment">//          excluded.</span>
+                                        <span class="kw">let</span> <span class="ident">decision</span> <span class="op">=</span> <span class="ident">requested_attrs</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_attrs</span>);
+                                        <span class="macro">security_access!</span>(<span class="question-mark">?</span><span class="ident">decision</span>, <span class="string">&quot;search attr decision&quot;</span>);
+                                        <span class="ident">decision</span>
+                                    })
+                                    .<span class="ident">collect</span>()
                 }
             );
 
             <span class="kw">if</span> <span class="ident">allowed_entries</span>.<span class="ident">is_empty</span>() {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;denied ❌&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;denied ❌&quot;</span>);
             } <span class="kw">else</span> {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;allowed {} entries ✅&quot;</span>, <span class="ident">allowed_entries</span>.<span class="ident">len</span>());
+                <span class="macro">security_access!</span>(<span class="string">&quot;allowed {} entries ✅&quot;</span>, <span class="ident">allowed_entries</span>.<span class="ident">len</span>());
             }
 
             <span class="prelude-val">Ok</span>(<span class="ident">allowed_entries</span>)
         })
     }
 
+    <span class="comment">// ! TRACING INTEGRATED</span>
     <span class="kw">fn</span> <span class="ident">search_filter_entry_attributes</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">se</span>: <span class="kw-2">&amp;</span><span class="ident">SearchEvent</span>,
-        <span class="ident">entries</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span>,
+        <span class="ident">entries</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">EntrySealedCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span>,
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryReduced</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="comment">// If this is an internal search, do nothing. This can occur in some test cases ONLY</span>
         <span class="kw">let</span> <span class="ident">rec_entry</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">se</span>.<span class="ident">ident</span>.<span class="ident">origin</span> {
             <span class="ident">IdentType::Internal</span> <span class="op">=</span><span class="op">&gt;</span> {
                 <span class="kw">if</span> <span class="macro">cfg!</span>(<span class="ident">test</span>) {
-                    <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;TEST: Internal search in external interface - allowing due to cfg test ...&quot;</span>);
+                    <span class="macro">trace!</span>(<span class="string">&quot;TEST: Internal search in external interface - allowing due to cfg test ...&quot;</span>);
                     <span class="comment">// In tests we just push everything back.</span>
                     <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">entries</span>
                         .<span class="ident">into_iter</span>()
-                        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="kw">unsafe</span> { <span class="ident">e</span>.<span class="ident">into_reduced</span>() })
+                        .<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="kw">unsafe</span> { <span class="ident">e</span>.<span class="ident">as_ref</span>().<span class="ident">clone</span>().<span class="ident">into_reduced</span>() })
                         .<span class="ident">collect</span>());
                 } <span class="kw">else</span> {
                     <span class="comment">// In production we can&#39;t risk leaking data here, so we return</span>
                     <span class="comment">// empty sets.</span>
-                    <span class="macro">lsecurity_critical!</span>(<span class="ident">audit</span>, <span class="string">&quot;IMPOSSIBLE STATE: Internal search in external interface?! Returning empty for safety.&quot;</span>);
+                    <span class="macro">security_critical!</span>(<span class="string">&quot;IMPOSSIBLE STATE: Internal search in external interface?! Returning empty for safety.&quot;</span>);
                     <span class="comment">// No need to check ACS</span>
                     <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="ident">Vec::new</span>());
                 }
             }
             <span class="ident">IdentType::User</span>(<span class="ident">u</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">u</span>.<span class="ident">entry</span>,
         };
-        <span class="macro">lperf_segment!</span>(<span class="ident">audit</span>, <span class="string">&quot;access::search_filter_entry_attributes&quot;</span>, <span class="op">|</span><span class="op">|</span> {
+
+        <span class="macro">spanned!</span>(<span class="string">&quot;access::search_filter_entry_attributes&quot;</span>, {
             <span class="comment">/*
              * Super similar to above (could even re-use some parts). Given a set of entries,
              * reduce the attribute sets on them to &quot;what is visible&quot;. This is ONLY called on
@@ -3100,15 +2946,12 @@
              * impersonate and such actually still get the whole entry back as not to break
              * modify and co.
              */</span>
-            <span class="macro">ltrace!</span>(
-                <span class="ident">audit</span>,
-                <span class="string">&quot;Access check for search (reduce) event: {}&quot;</span>,
-                <span class="ident">se</span>.<span class="ident">ident</span>
-            );
+
+            <span class="macro">trace!</span>(<span class="string">&quot;Access check for search (reduce) event: {}&quot;</span>, <span class="ident">se</span>.<span class="ident">ident</span>);
             <span class="kw">let</span> <span class="ident">acp_resolve_filter_cache</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_acp_resolve_filter_cache</span>();
 
             <span class="comment">// Get the relevant acps for this receiver.</span>
-            <span class="kw">let</span> <span class="ident">related_acp</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">search_related_acp</span>(<span class="ident">audit</span>, <span class="ident">rec_entry</span>, <span class="ident">se</span>);
+            <span class="kw">let</span> <span class="ident">related_acp</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">search_related_acp</span>(<span class="ident">rec_entry</span>, <span class="ident">se</span>);
 
             <span class="kw">let</span> <span class="ident">related_acp</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">AccessControlSearch</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">if</span> <span class="kw">let</span> <span class="prelude-val">Some</span>(<span class="ident">r_attrs</span>) <span class="op">=</span> <span class="ident">se</span>.<span class="ident">attrs</span>.<span class="ident">as_ref</span>() {
                 <span class="ident">related_acp</span>
@@ -3126,10 +2969,9 @@
                     (<span class="kw-2">&amp;</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">targetscope</span>)
                         .<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">se</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>))
                         .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-                            <span class="macro">ladmin_error!</span>(
-                                <span class="ident">audit</span>,
-                                <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
-                                <span class="ident">e</span>
+                            <span class="macro">admin_error!</span>(
+                                <span class="question-mark">?</span><span class="ident">e</span>,
+                                <span class="string">&quot;A internal filter/event was passed for resolution!?!?&quot;</span>
                             );
                             <span class="ident">e</span>
                         })
@@ -3140,7 +2982,7 @@
 
             <span class="comment">/*
             related_acp.iter().for_each(|racp| {
-                lsecurity_access!(audit, &quot;Related acs -&gt; {:?}&quot;, racp.acp.name);
+                lsecurity_access!( &quot;Related acs -&gt; {:?}&quot;, racp.acp.name);
             });
             */</span>
 
@@ -3152,10 +2994,8 @@
                 .<span class="ident">map</span>(<span class="op">|</span><span class="ident">vs</span><span class="op">|</span> <span class="ident">vs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>()).<span class="ident">collect</span>());
 
             <span class="comment">//  For each entry</span>
-            <span class="kw">let</span> <span class="ident">allowed_entries</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryReduced</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span> <span class="macro">lperf_segment!</span>(
-                <span class="ident">audit</span>,
-                <span class="string">&quot;access::search_filter_entry_attributes&lt;allowed_entries&gt;&quot;</span>,
-                <span class="op">|</span><span class="op">|</span> {
+            <span class="kw">let</span> <span class="ident">allowed_entries</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryReduced</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span><span class="op">&gt;</span> <span class="op">=</span>
+                <span class="macro">spanned!</span>(<span class="string">&quot;access::search_filter_entry_attributes&lt;allowed_entries&gt;&quot;</span>, {
                     <span class="ident">entries</span>
                         .<span class="ident">into_iter</span>()
                         .<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
@@ -3164,31 +3004,24 @@
                             <span class="kw">let</span> <span class="ident">allowed_attrs</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">related_acp</span>
                                 .<span class="ident">iter</span>()
                                 .<span class="ident">filter_map</span>(<span class="op">|</span>(<span class="ident">acs</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
-                                    <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>) {
-                                        <span class="macro">lsecurity_access!</span>(
-                                            <span class="ident">audit</span>,
-                                            <span class="string">&quot;target entry {:?} matches acs {}&quot;</span>,
-                                            <span class="ident">e</span>.<span class="ident">get_uuid</span>(),
-                                            <span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">name</span>
+                                    <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="ident">f_res</span>) {
+                                        <span class="macro">security_access!</span>(
+                                            <span class="ident">target</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">e</span>.<span class="ident">get_uuid</span>(),
+                                            <span class="ident">acs</span> <span class="op">=</span> <span class="op">%</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">name</span>,
+                                            <span class="string">&quot;target entry matches acs&quot;</span>,
                                         );
                                         <span class="comment">// add search_attrs to allowed iterator</span>
                                         <span class="prelude-val">Some</span>(<span class="ident">acs</span>.<span class="ident">attrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>()).<span class="ident">filter</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> {
-                                            <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">req_attrs</span> {
-                                                <span class="comment">// We return all as we requested all.</span>
-                                                <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">true</span>,
-                                                <span class="prelude-val">Some</span>(<span class="ident">r_attrs</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                                                    <span class="comment">// If we have a req_attrs set, we only return</span>
-                                                    <span class="comment">// things that were requested.</span>
-                                                    <span class="ident">r_attrs</span>.<span class="ident">contains</span>(<span class="ident">s</span>)
-                                                }
-                                            }
+                                            <span class="ident">req_attrs</span>
+                                                .<span class="ident">as_ref</span>()
+                                                .<span class="ident">map</span>(<span class="op">|</span><span class="ident">r_attrs</span><span class="op">|</span> <span class="ident">r_attrs</span>.<span class="ident">contains</span>(<span class="ident">s</span>))
+                                                .<span class="ident">unwrap_or</span>(<span class="bool-val">true</span>)
                                         }))
                                     } <span class="kw">else</span> {
-                                        <span class="macro">ltrace!</span>(
-                                            <span class="ident">audit</span>,
-                                            <span class="string">&quot;target entry {:?} DOES NOT match acs {}&quot;</span>,
-                                            <span class="ident">e</span>.<span class="ident">get_uuid</span>(),
-                                            <span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">name</span>
+                                        <span class="macro">trace!</span>(
+                                            <span class="ident">target</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">e</span>.<span class="ident">get_uuid</span>(),
+                                            <span class="ident">acs</span> <span class="op">=</span> <span class="op">%</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">name</span>,
+                                            <span class="string">&quot;target entry DOES NOT match acs&quot;</span>,
                                         );
                                         <span class="prelude-val">None</span>
                                     }
@@ -3197,29 +3030,25 @@
                                 .<span class="ident">collect</span>();
 
                             <span class="comment">// Remove all others that are present on the entry.</span>
-                            <span class="macro">lsecurity_access!</span>(
-                                <span class="ident">audit</span>,
-                                <span class="string">&quot;requested attributes --&gt; {:?} allowed attributes   --&gt; {:?}&quot;</span>,
-                                <span class="ident">req_attrs</span>,
-                                <span class="ident">allowed_attrs</span>
+                            <span class="macro">security_access!</span>(
+                                <span class="ident">requested</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">req_attrs</span>,
+                                <span class="ident">allowed</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">allowed_attrs</span>,
+                                <span class="string">&quot;attributes&quot;</span>
                             );
 
                             <span class="comment">// Now purge the attrs that are NOT allowed.</span>
-                            <span class="macro">lperf_trace_segment!</span>(
-                                <span class="ident">audit</span>,
+                            <span class="macro">spanned!</span>(
                                 <span class="string">&quot;access::search_filter_entry_attributes&lt;reduce_attributes&gt;&quot;</span>,
-                                <span class="op">|</span><span class="op">|</span> <span class="ident">e</span>.<span class="ident">reduce_attributes</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_attrs</span>)
+                                { <span class="ident">e</span>.<span class="ident">reduce_attributes</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_attrs</span>) }
                             )
                         })
                         .<span class="ident">collect</span>()
-                }
-            );
+                });
 
             <span class="kw">if</span> <span class="ident">allowed_entries</span>.<span class="ident">is_empty</span>() {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;reduced to empty set on all entries ❌&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;reduced to empty set on all entries ❌&quot;</span>);
             } <span class="kw">else</span> {
-                <span class="macro">lsecurity_access!</span>(
-                    <span class="ident">audit</span>,
+                <span class="macro">security_access!</span>(
                     <span class="string">&quot;attribute set reduced on {} entries ✅&quot;</span>,
                     <span class="ident">allowed_entries</span>.<span class="ident">len</span>()
                 );
@@ -3232,38 +3061,32 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::cognitive_complexity</span>)]</span>
     <span class="kw">fn</span> <span class="ident">modify_allow_operation</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">me</span>: <span class="kw-2">&amp;</span><span class="ident">ModifyEvent</span>,
-        <span class="ident">entries</span>: <span class="kw-2">&amp;</span>[<span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span>],
+        <span class="ident">entries</span>: <span class="kw-2">&amp;</span>[<span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">EntrySealedCommitted</span><span class="op">&gt;</span>],
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">rec_entry</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">me</span>.<span class="ident">ident</span>.<span class="ident">origin</span> {
             <span class="ident">IdentType::Internal</span> <span class="op">=</span><span class="op">&gt;</span> {
-                <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;Internal operation, bypassing access check&quot;</span>);
+                <span class="macro">trace!</span>(<span class="string">&quot;Internal operation, bypassing access check&quot;</span>);
                 <span class="comment">// No need to check ACS</span>
                 <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>);
             }
             <span class="ident">IdentType::User</span>(<span class="ident">u</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">u</span>.<span class="ident">entry</span>,
         };
-        <span class="macro">lperf_segment!</span>(<span class="ident">audit</span>, <span class="string">&quot;access::modify_allow_operation&quot;</span>, <span class="op">|</span><span class="op">|</span> {
-            <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;Access check for modify event: {}&quot;</span>, <span class="ident">me</span>.<span class="ident">ident</span>);
+        <span class="macro">spanned!</span>(<span class="string">&quot;access::modify_allow_operation&quot;</span>, {
+            <span class="macro">trace!</span>(<span class="string">&quot;Access check for modify event: {}&quot;</span>, <span class="ident">me</span>.<span class="ident">ident</span>);
 
             <span class="comment">// Some useful references we&#39;ll use for the remainder of the operation</span>
             <span class="kw">let</span> <span class="ident">modify_state</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_modify</span>();
             <span class="kw">let</span> <span class="ident">acp_resolve_filter_cache</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_acp_resolve_filter_cache</span>();
 
             <span class="comment">// Pre-check if the no-no purge class is present</span>
-            <span class="kw">let</span> <span class="ident">disallow</span> <span class="op">=</span> <span class="ident">me</span>.<span class="ident">modlist</span>.<span class="ident">iter</span>().<span class="ident">fold</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">acc</span>, <span class="ident">m</span><span class="op">|</span> {
-                <span class="kw">if</span> <span class="ident">acc</span> {
-                    <span class="ident">acc</span>
-                } <span class="kw">else</span> {
-                    <span class="kw">match</span> <span class="ident">m</span> {
-                        <span class="ident">Modify::Purged</span>(<span class="ident">a</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">a</span> <span class="op">=</span><span class="op">=</span> <span class="string">&quot;class&quot;</span>,
-                        <span class="kw">_</span> <span class="op">=</span><span class="op">&gt;</span> <span class="bool-val">false</span>,
-                    }
-                }
-            });
+            <span class="kw">let</span> <span class="ident">disallow</span> <span class="op">=</span> <span class="ident">me</span>
+                .<span class="ident">modlist</span>
+                .<span class="ident">iter</span>()
+                .<span class="ident">any</span>(<span class="op">|</span><span class="ident">m</span><span class="op">|</span> <span class="macro">matches!</span>(<span class="ident">m</span>, <span class="ident">Modify::Purged</span>(<span class="ident">a</span>) <span class="kw">if</span> <span class="ident">a</span> <span class="op">=</span><span class="op">=</span> <span class="string">&quot;class&quot;</span>));
+
             <span class="kw">if</span> <span class="ident">disallow</span> {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;Disallowing purge class in modification&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;Disallowing purge class in modification&quot;</span>);
                 <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="bool-val">false</span>);
             }
 
@@ -3278,24 +3101,20 @@
                                 (<span class="kw-2">&amp;</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">targetscope</span>)
                                     .<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">me</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>))
                                     .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-                                        <span class="macro">ladmin_error!</span>(
-                                            <span class="ident">audit</span>,
+                                        <span class="macro">admin_error!</span>(
                                             <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
                                             <span class="ident">e</span>
                                         );
                                         <span class="ident">e</span>
                                     })
                                     .<span class="ident">ok</span>()
-                                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">f_res</span><span class="op">|</span>
-                                        (<span class="ident">acs</span>, <span class="ident">f_res</span>)
-                                    )
+                                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">f_res</span><span class="op">|</span> (<span class="ident">acs</span>, <span class="ident">f_res</span>))
                             } <span class="kw">else</span> {
                                 <span class="prelude-val">None</span>
                             }
                         }
                         <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                            <span class="macro">ladmin_error!</span>(
-                                <span class="ident">audit</span>,
+                            <span class="macro">admin_error!</span>(
                                 <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
                                 <span class="ident">e</span>
                             );
@@ -3306,7 +3125,7 @@
                 .<span class="ident">collect</span>();
 
             <span class="ident">related_acp</span>.<span class="ident">iter</span>().<span class="ident">for_each</span>(<span class="op">|</span><span class="ident">racp</span><span class="op">|</span> {
-                <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;Related acs -&gt; {:?}&quot;</span>, <span class="ident">racp</span>.<span class="number">0</span>.<span class="ident">acp</span>.<span class="ident">name</span>);
+                <span class="macro">trace!</span>(<span class="string">&quot;Related acs -&gt; {:?}&quot;</span>, <span class="ident">racp</span>.<span class="number">0</span>.<span class="ident">acp</span>.<span class="ident">name</span>);
             });
 
             <span class="comment">// build two sets of &quot;requested pres&quot; and &quot;requested rem&quot;</span>
@@ -3360,72 +3179,63 @@
                 })
                 .<span class="ident">collect</span>();
 
-            <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;Requested present set: {:?}&quot;</span>, <span class="ident">requested_pres</span>);
-            <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;Requested remove set: {:?}&quot;</span>, <span class="ident">requested_rem</span>);
-            <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;Requested class set: {:?}&quot;</span>, <span class="ident">requested_classes</span>);
+            <span class="macro">security_access!</span>(<span class="question-mark">?</span><span class="ident">requested_pres</span>, <span class="string">&quot;Requested present set&quot;</span>);
+            <span class="macro">security_access!</span>(<span class="question-mark">?</span><span class="ident">requested_rem</span>, <span class="string">&quot;Requested remove set&quot;</span>);
+            <span class="macro">security_access!</span>(<span class="question-mark">?</span><span class="ident">requested_classes</span>, <span class="string">&quot;Requested class set&quot;</span>);
 
-            <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">entries</span>.<span class="ident">iter</span>().<span class="ident">fold</span>(<span class="bool-val">true</span>, <span class="op">|</span><span class="ident">acc</span>, <span class="ident">e</span><span class="op">|</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">acc</span> {
+            <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">entries</span>.<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
+                <span class="comment">// For this entry, find the acp&#39;s that apply to it from the</span>
+                <span class="comment">// set that apply to the entry that is performing the operation</span>
+                <span class="kw">let</span> <span class="ident">scoped_acp</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">AccessControlModify</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">related_acp</span>
+                    .<span class="ident">iter</span>()
+                    .<span class="ident">filter_map</span>(<span class="op">|</span>(<span class="ident">acm</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
+                        <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="ident">f_res</span>) {
+                            <span class="prelude-val">Some</span>(<span class="kw-2">*</span><span class="ident">acm</span>)
+                        } <span class="kw">else</span> {
+                            <span class="prelude-val">None</span>
+                        }
+                    })
+                    .<span class="ident">collect</span>();
+                <span class="comment">// Build the sets of classes, pres and rem we are allowed to modify, extend</span>
+                <span class="comment">// or use based on the set of matched acps.</span>
+                <span class="kw">let</span> <span class="ident">allowed_pres</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">scoped_acp</span>
+                    .<span class="ident">iter</span>()
+                    .<span class="ident">flat_map</span>(<span class="op">|</span><span class="ident">acp</span><span class="op">|</span> <span class="ident">acp</span>.<span class="ident">presattrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">as_str</span>()))
+                    .<span class="ident">collect</span>();
+
+                <span class="kw">let</span> <span class="ident">allowed_rem</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">scoped_acp</span>
+                    .<span class="ident">iter</span>()
+                    .<span class="ident">flat_map</span>(<span class="op">|</span><span class="ident">acp</span><span class="op">|</span> <span class="ident">acp</span>.<span class="ident">remattrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">as_str</span>()))
+                    .<span class="ident">collect</span>();
+
+                <span class="kw">let</span> <span class="ident">allowed_classes</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">scoped_acp</span>
+                    .<span class="ident">iter</span>()
+                    .<span class="ident">flat_map</span>(<span class="op">|</span><span class="ident">acp</span><span class="op">|</span> <span class="ident">acp</span>.<span class="ident">classes</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">as_str</span>()))
+                    .<span class="ident">collect</span>();
+
+                <span class="comment">// Now check all the subsets are true. Remember, purge class</span>
+                <span class="comment">// is already checked above.</span>
+                <span class="kw">if</span> <span class="op">!</span><span class="ident">requested_pres</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_pres</span>) {
+                    <span class="macro">security_access!</span>(<span class="string">&quot;requested_pres is not a subset of allowed&quot;</span>);
+                    <span class="macro">security_access!</span>(<span class="string">&quot;{:?} !⊆ {:?}&quot;</span>, <span class="ident">requested_pres</span>, <span class="ident">allowed_pres</span>);
+                    <span class="bool-val">false</span>
+                } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">requested_rem</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_rem</span>) {
+                    <span class="macro">security_access!</span>(<span class="string">&quot;requested_rem is not a subset of allowed&quot;</span>);
+                    <span class="macro">security_access!</span>(<span class="string">&quot;{:?} !⊆ {:?}&quot;</span>, <span class="ident">requested_rem</span>, <span class="ident">allowed_rem</span>);
+                    <span class="bool-val">false</span>
+                } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">requested_classes</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_classes</span>) {
+                    <span class="macro">security_access!</span>(<span class="string">&quot;requested_classes is not a subset of allowed&quot;</span>);
+                    <span class="macro">security_access!</span>(<span class="string">&quot;{:?} !⊆ {:?}&quot;</span>, <span class="ident">requested_classes</span>, <span class="ident">allowed_classes</span>);
                     <span class="bool-val">false</span>
                 } <span class="kw">else</span> {
-                    <span class="comment">// For this entry, find the acp&#39;s that apply to it from the</span>
-                    <span class="comment">// set that apply to the entry that is performing the operation</span>
-                    <span class="kw">let</span> <span class="ident">scoped_acp</span>: <span class="ident">Vec</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">AccessControlModify</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">related_acp</span>
-                        .<span class="ident">iter</span>()
-                        .<span class="ident">filter_map</span>(<span class="op">|</span>(<span class="ident">acm</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
-                            <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>) {
-                                <span class="prelude-val">Some</span>(<span class="kw-2">*</span><span class="ident">acm</span>)
-                            } <span class="kw">else</span> {
-                                <span class="prelude-val">None</span>
-                            }
-                        })
-                        .<span class="ident">collect</span>();
-                    <span class="comment">// Build the sets of classes, pres and rem we are allowed to modify, extend</span>
-                    <span class="comment">// or use based on the set of matched acps.</span>
-                    <span class="kw">let</span> <span class="ident">allowed_pres</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">scoped_acp</span>
-                        .<span class="ident">iter</span>()
-                        .<span class="ident">flat_map</span>(<span class="op">|</span><span class="ident">acp</span><span class="op">|</span> <span class="ident">acp</span>.<span class="ident">presattrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">as_str</span>()))
-                        .<span class="ident">collect</span>();
-
-                    <span class="kw">let</span> <span class="ident">allowed_rem</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">scoped_acp</span>
-                        .<span class="ident">iter</span>()
-                        .<span class="ident">flat_map</span>(<span class="op">|</span><span class="ident">acp</span><span class="op">|</span> <span class="ident">acp</span>.<span class="ident">remattrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">as_str</span>()))
-                        .<span class="ident">collect</span>();
-
-                    <span class="kw">let</span> <span class="ident">allowed_classes</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">scoped_acp</span>
-                        .<span class="ident">iter</span>()
-                        .<span class="ident">flat_map</span>(<span class="op">|</span><span class="ident">acp</span><span class="op">|</span> <span class="ident">acp</span>.<span class="ident">classes</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">v</span><span class="op">|</span> <span class="ident">v</span>.<span class="ident">as_str</span>()))
-                        .<span class="ident">collect</span>();
-
-                    <span class="comment">// Now check all the subsets are true. Remember, purge class</span>
-                    <span class="comment">// is already checked above.</span>
-                    <span class="kw">if</span> <span class="op">!</span><span class="ident">requested_pres</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_pres</span>) {
-                        <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;requested_pres is not a subset of allowed&quot;</span>);
-                        <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;{:?} !⊆ {:?}&quot;</span>, <span class="ident">requested_pres</span>, <span class="ident">allowed_pres</span>);
-                        <span class="bool-val">false</span>
-                    } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">requested_rem</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_rem</span>) {
-                        <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;requested_rem is not a subset of allowed&quot;</span>);
-                        <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;{:?} !⊆ {:?}&quot;</span>, <span class="ident">requested_rem</span>, <span class="ident">allowed_rem</span>);
-                        <span class="bool-val">false</span>
-                    } <span class="kw">else</span> <span class="kw">if</span> <span class="op">!</span><span class="ident">requested_classes</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_classes</span>) {
-                        <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;requested_classes is not a subset of allowed&quot;</span>);
-                        <span class="macro">lsecurity_access!</span>(
-                            <span class="ident">audit</span>,
-                            <span class="string">&quot;{:?} !⊆ {:?}&quot;</span>,
-                            <span class="ident">requested_classes</span>,
-                            <span class="ident">allowed_classes</span>
-                        );
-                        <span class="bool-val">false</span>
-                    } <span class="kw">else</span> {
-                        <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;passed pres, rem, classes check.&quot;</span>);
-                        <span class="bool-val">true</span>
-                    }
+                    <span class="macro">security_access!</span>(<span class="string">&quot;passed pres, rem, classes check.&quot;</span>);
+                    <span class="bool-val">true</span>
                 } <span class="comment">// if acc == false</span>
             });
             <span class="kw">if</span> <span class="ident">r</span> {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;allowed ✅&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;allowed ✅&quot;</span>);
             } <span class="kw">else</span> {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;denied ❌&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;denied ❌&quot;</span>);
             }
             <span class="prelude-val">Ok</span>(<span class="ident">r</span>)
         })
@@ -3434,20 +3244,19 @@
     <span class="attribute">#[<span class="ident">allow</span>(<span class="ident">clippy::cognitive_complexity</span>)]</span>
     <span class="kw">fn</span> <span class="ident">create_allow_operation</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">ce</span>: <span class="kw-2">&amp;</span><span class="ident">CreateEvent</span>,
         <span class="ident">entries</span>: <span class="kw-2">&amp;</span>[<span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span>],
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">rec_entry</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">ce</span>.<span class="ident">ident</span>.<span class="ident">origin</span> {
             <span class="ident">IdentType::Internal</span> <span class="op">=</span><span class="op">&gt;</span> {
-                <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;Internal operation, bypassing access check&quot;</span>);
+                <span class="macro">trace!</span>(<span class="string">&quot;Internal operation, bypassing access check&quot;</span>);
                 <span class="comment">// No need to check ACS</span>
                 <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>);
             }
             <span class="ident">IdentType::User</span>(<span class="ident">u</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">u</span>.<span class="ident">entry</span>,
         };
-        <span class="macro">lperf_segment!</span>(<span class="ident">audit</span>, <span class="string">&quot;access::create_allow_operation&quot;</span>, <span class="op">|</span><span class="op">|</span> {
-            <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;Access check for create event: {}&quot;</span>, <span class="ident">ce</span>.<span class="ident">ident</span>);
+        <span class="macro">spanned!</span>(<span class="string">&quot;access::create_allow_operation&quot;</span>, {
+            <span class="macro">trace!</span>(<span class="string">&quot;Access check for create event: {}&quot;</span>, <span class="ident">ce</span>.<span class="ident">ident</span>);
 
             <span class="comment">// Some useful references we&#39;ll use for the remainder of the operation</span>
             <span class="kw">let</span> <span class="ident">create_state</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_create</span>();
@@ -3457,30 +3266,27 @@
             <span class="kw">let</span> <span class="ident">related_acp</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="kw-2">&amp;</span><span class="ident">AccessControlCreate</span>, <span class="kw">_</span>)<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">create_state</span>
                 .<span class="ident">iter</span>()
                 .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">acs</span><span class="op">|</span> {
-                    <span class="kw">match</span> (<span class="kw-2">&amp;</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">receiver</span>).<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">ce</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>)) {
-                        <span class="prelude-val">Ok</span>(<span class="ident">f_res</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                            <span class="kw">if</span> <span class="ident">rec_entry</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>) {
-                                (<span class="kw-2">&amp;</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">targetscope</span>)
-                                    .<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">ce</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>))
-                                    .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-                                        <span class="macro">ladmin_error!</span>(
-                                            <span class="ident">audit</span>,
-                                            <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
-                                            <span class="ident">e</span>
-                                        );
-                                        <span class="ident">e</span>
-                                    })
-                                    .<span class="ident">ok</span>()
-                                    .<span class="ident">map</span>(<span class="op">|</span><span class="ident">f_res</span><span class="op">|</span>
-                                        (<span class="ident">acs</span>, <span class="ident">f_res</span>)
-                                    )
-                            } <span class="kw">else</span> {
-                                <span class="prelude-val">None</span>
-                            }
-                        }
+                    <span class="kw">match</span> <span class="ident">acs</span>
+                        .<span class="ident">acp</span>
+                        .<span class="ident">receiver</span>
+                        .<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">ce</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>))
+                    {
+                        <span class="prelude-val">Ok</span>(<span class="ident">f_res</span>) <span class="kw">if</span> <span class="ident">rec_entry</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">acs</span>
+                            .<span class="ident">acp</span>
+                            .<span class="ident">targetscope</span>
+                            .<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">ce</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>))
+                            .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
+                                <span class="macro">admin_error!</span>(
+                                    <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
+                                    <span class="ident">e</span>
+                                );
+                                <span class="ident">e</span>
+                            })
+                            .<span class="ident">ok</span>()
+                            .<span class="ident">map</span>(<span class="op">|</span><span class="ident">f_res</span><span class="op">|</span> (<span class="ident">acs</span>, <span class="ident">f_res</span>)),
+                        <span class="prelude-val">Ok</span>(<span class="kw">_</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="prelude-val">None</span>,
                         <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                            <span class="macro">ladmin_error!</span>(
-                                <span class="ident">audit</span>,
+                            <span class="macro">admin_error!</span>(
                                 <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
                                 <span class="ident">e</span>
                             );
@@ -3490,96 +3296,65 @@
                 })
                 .<span class="ident">collect</span>();
 
-            <span class="comment">// lsecurity_access!(audit, &quot;Related acc -&gt; {:?}&quot;, related_acp);</span>
+            <span class="comment">// lsecurity_access!( &quot;Related acc -&gt; {:?}&quot;, related_acp);</span>
 
             <span class="comment">// For each entry</span>
-            <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">entries</span>.<span class="ident">iter</span>().<span class="ident">fold</span>(<span class="bool-val">true</span>, <span class="op">|</span><span class="ident">acc</span>, <span class="ident">e</span><span class="op">|</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">acc</span> {
-                    <span class="comment">// We have already failed, move on.</span>
-                    <span class="bool-val">false</span>
-                } <span class="kw">else</span> {
-                    <span class="comment">// Build the set of requested classes and attrs here.</span>
-                    <span class="kw">let</span> <span class="ident">create_attrs</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">e</span>.<span class="ident">get_ava_names</span>().<span class="ident">collect</span>();
-                    <span class="comment">// If this is empty, we make an empty set, which is fine because</span>
-                    <span class="comment">// the empty class set despite matching is_subset, will have the</span>
-                    <span class="comment">// following effect:</span>
-                    <span class="comment">// * there is no class on entry, so schema will fail</span>
-                    <span class="comment">// * plugin-base will add object to give a class, but excess</span>
-                    <span class="comment">//   attrs will cause fail (could this be a weakness?)</span>
-                    <span class="comment">// * class is a &quot;may&quot;, so this could be empty in the rules, so</span>
-                    <span class="comment">//   if the accr is empty this would not be a true subset,</span>
-                    <span class="comment">//   so this would &quot;fail&quot;, but any content in the accr would</span>
-                    <span class="comment">//   have to be validated.</span>
-                    <span class="comment">//</span>
-                    <span class="comment">// I still think if this is None, we should just fail here ...</span>
-                    <span class="comment">// because it shouldn&#39;t be possible to match.</span>
+            <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">entries</span>.<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
+                <span class="comment">// Build the set of requested classes and attrs here.</span>
+                <span class="kw">let</span> <span class="ident">create_attrs</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">e</span>.<span class="ident">get_ava_names</span>().<span class="ident">collect</span>();
+                <span class="comment">// If this is empty, we make an empty set, which is fine because</span>
+                <span class="comment">// the empty class set despite matching is_subset, will have the</span>
+                <span class="comment">// following effect:</span>
+                <span class="comment">// * there is no class on entry, so schema will fail</span>
+                <span class="comment">// * plugin-base will add object to give a class, but excess</span>
+                <span class="comment">//   attrs will cause fail (could this be a weakness?)</span>
+                <span class="comment">// * class is a &quot;may&quot;, so this could be empty in the rules, so</span>
+                <span class="comment">//   if the accr is empty this would not be a true subset,</span>
+                <span class="comment">//   so this would &quot;fail&quot;, but any content in the accr would</span>
+                <span class="comment">//   have to be validated.</span>
+                <span class="comment">//</span>
+                <span class="comment">// I still think if this is None, we should just fail here ...</span>
+                <span class="comment">// because it shouldn&#39;t be possible to match.</span>
 
-                    <span class="kw">let</span> <span class="ident">create_classes</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">e</span>.<span class="ident">get_ava_as_str</span>(<span class="string">&quot;class&quot;</span>) {
-                        <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">s</span>.<span class="ident">collect</span>(),
-                        <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
-                            <span class="macro">ladmin_error!</span>(<span class="ident">audit</span>, <span class="string">&quot;Class set failed to build - corrupted entry?&quot;</span>);
+                <span class="kw">let</span> <span class="ident">create_classes</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="ident">e</span>.<span class="ident">get_ava_as_str</span>(<span class="string">&quot;class&quot;</span>) {
+                    <span class="prelude-val">Some</span>(<span class="ident">s</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="ident">s</span>.<span class="ident">collect</span>(),
+                    <span class="prelude-val">None</span> <span class="op">=</span><span class="op">&gt;</span> {
+                        <span class="macro">admin_error!</span>(<span class="string">&quot;Class set failed to build - corrupted entry?&quot;</span>);
+                        <span class="kw">return</span> <span class="bool-val">false</span>;
+                    }
+                };
+
+                <span class="ident">related_acp</span>.<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span>(<span class="ident">accr</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
+                    <span class="comment">// Check to see if allowed.</span>
+                    <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="ident">f_res</span>) {
+                        <span class="macro">security_access!</span>(<span class="question-mark">?</span><span class="ident">e</span>, <span class="ident">acs</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">accr</span>, <span class="string">&quot;entry matches acs&quot;</span>);
+                        <span class="comment">// It matches, so now we have to check attrs and classes.</span>
+                        <span class="comment">// Remember, we have to match ALL requested attrs</span>
+                        <span class="comment">// and classes to pass!</span>
+                        <span class="kw">let</span> <span class="ident">allowed_attrs</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span>
+                            <span class="ident">accr</span>.<span class="ident">attrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>()).<span class="ident">collect</span>();
+                        <span class="kw">let</span> <span class="ident">allowed_classes</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span>
+                            <span class="ident">accr</span>.<span class="ident">classes</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>()).<span class="ident">collect</span>();
+
+                        <span class="kw">if</span> <span class="op">!</span><span class="ident">create_attrs</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_attrs</span>) {
+                            <span class="macro">security_access!</span>(<span class="string">&quot;create_attrs is not a subset of allowed&quot;</span>);
+                            <span class="macro">security_access!</span>(<span class="string">&quot;{:?} !⊆ {:?}&quot;</span>, <span class="ident">create_attrs</span>, <span class="ident">allowed_attrs</span>);
                             <span class="kw">return</span> <span class="bool-val">false</span>;
                         }
-                    };
-
-                    <span class="ident">related_acp</span>.<span class="ident">iter</span>().<span class="ident">fold</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">r_acc</span>, (<span class="ident">accr</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
-                        <span class="kw">if</span> <span class="ident">r_acc</span> {
-                            <span class="comment">// Already allowed, continue.</span>
-                            <span class="ident">r_acc</span>
-                        } <span class="kw">else</span> {
-                            <span class="comment">// Check to see if allowed.</span>
-                            <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>) {
-                                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;entry {:?} matches acs {:?}&quot;</span>, <span class="ident">e</span>, <span class="ident">accr</span>);
-                                <span class="comment">// It matches, so now we have to check attrs and classes.</span>
-                                <span class="comment">// Remember, we have to match ALL requested attrs</span>
-                                <span class="comment">// and classes to pass!</span>
-                                <span class="kw">let</span> <span class="ident">allowed_attrs</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span>
-                                    <span class="ident">accr</span>.<span class="ident">attrs</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>()).<span class="ident">collect</span>();
-                                <span class="kw">let</span> <span class="ident">allowed_classes</span>: <span class="ident">BTreeSet</span><span class="op">&lt;</span><span class="kw-2">&amp;</span><span class="ident">str</span><span class="op">&gt;</span> <span class="op">=</span>
-                                    <span class="ident">accr</span>.<span class="ident">classes</span>.<span class="ident">iter</span>().<span class="ident">map</span>(<span class="op">|</span><span class="ident">s</span><span class="op">|</span> <span class="ident">s</span>.<span class="ident">as_str</span>()).<span class="ident">collect</span>();
-
-                                <span class="kw">if</span> <span class="op">!</span><span class="ident">create_attrs</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_attrs</span>) {
-                                    <span class="macro">lsecurity_access!</span>(
-                                        <span class="ident">audit</span>,
-                                        <span class="string">&quot;create_attrs is not a subset of allowed&quot;</span>
-                                    );
-                                    <span class="macro">lsecurity_access!</span>(
-                                        <span class="ident">audit</span>,
-                                        <span class="string">&quot;{:?} !⊆ {:?}&quot;</span>,
-                                        <span class="ident">create_attrs</span>,
-                                        <span class="ident">allowed_attrs</span>
-                                    );
-                                    <span class="kw">return</span> <span class="bool-val">false</span>;
-                                }
-                                <span class="kw">if</span> <span class="op">!</span><span class="ident">create_classes</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_classes</span>) {
-                                    <span class="macro">lsecurity_access!</span>(
-                                        <span class="ident">audit</span>,
-                                        <span class="string">&quot;create_classes is not a subset of allowed&quot;</span>
-                                    );
-                                    <span class="macro">lsecurity_access!</span>(
-                                        <span class="ident">audit</span>,
-                                        <span class="string">&quot;{:?} !⊆ {:?}&quot;</span>,
-                                        <span class="ident">create_classes</span>,
-                                        <span class="ident">allowed_classes</span>
-                                    );
-                                    <span class="kw">return</span> <span class="bool-val">false</span>;
-                                }
-                                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;passed&quot;</span>);
-
-                                <span class="bool-val">true</span>
-                            } <span class="kw">else</span> {
-                                <span class="macro">ltrace!</span>(
-                                    <span class="ident">audit</span>,
-                                    <span class="string">&quot;entry {:?} DOES NOT match acs {}&quot;</span>,
-                                    <span class="ident">e</span>,
-                                    <span class="ident">accr</span>.<span class="ident">acp</span>.<span class="ident">name</span>
-                                );
-                                <span class="comment">// Does not match, fail this rule.</span>
-                                <span class="bool-val">false</span>
-                            }
+                        <span class="kw">if</span> <span class="op">!</span><span class="ident">create_classes</span>.<span class="ident">is_subset</span>(<span class="kw-2">&amp;</span><span class="ident">allowed_classes</span>) {
+                            <span class="macro">security_access!</span>(<span class="string">&quot;create_classes is not a subset of allowed&quot;</span>);
+                            <span class="macro">security_access!</span>(<span class="string">&quot;{:?} !⊆ {:?}&quot;</span>, <span class="ident">create_classes</span>, <span class="ident">allowed_classes</span>);
+                            <span class="kw">return</span> <span class="bool-val">false</span>;
                         }
-                    })
-                }
+                        <span class="macro">security_access!</span>(<span class="string">&quot;passed&quot;</span>);
+
+                        <span class="bool-val">true</span>
+                    } <span class="kw">else</span> {
+                        <span class="macro">trace!</span>(<span class="question-mark">?</span><span class="ident">e</span>, <span class="ident">acs</span> <span class="op">=</span> <span class="op">%</span><span class="ident">accr</span>.<span class="ident">acp</span>.<span class="ident">name</span>, <span class="string">&quot;entry DOES NOT match acs&quot;</span>);
+                        <span class="comment">// Does not match, fail this rule.</span>
+                        <span class="bool-val">false</span>
+                    }
+                })
                 <span class="comment">//      Find the set of related acps for this entry.</span>
                 <span class="comment">//</span>
                 <span class="comment">//      For each &quot;created&quot; entry.</span>
@@ -3590,9 +3365,9 @@
             });
 
             <span class="kw">if</span> <span class="ident">r</span> {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;allowed ✅&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;allowed ✅&quot;</span>);
             } <span class="kw">else</span> {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;denied ❌&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;denied ❌&quot;</span>);
             }
 
             <span class="prelude-val">Ok</span>(<span class="ident">r</span>)
@@ -3601,20 +3376,19 @@
 
     <span class="kw">fn</span> <span class="ident">delete_allow_operation</span>(
         <span class="kw-2">&amp;</span><span class="self">self</span>,
-        <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span>,
         <span class="ident">de</span>: <span class="kw-2">&amp;</span><span class="ident">DeleteEvent</span>,
-        <span class="ident">entries</span>: <span class="kw-2">&amp;</span>[<span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span>],
+        <span class="ident">entries</span>: <span class="kw-2">&amp;</span>[<span class="ident">Arc</span><span class="op">&lt;</span><span class="ident">EntrySealedCommitted</span><span class="op">&gt;</span>],
     ) <span class="op">-</span><span class="op">&gt;</span> <span class="prelude-ty">Result</span><span class="op">&lt;</span><span class="ident">bool</span>, <span class="ident">OperationError</span><span class="op">&gt;</span> {
         <span class="kw">let</span> <span class="ident">rec_entry</span>: <span class="kw-2">&amp;</span><span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntrySealed</span>, <span class="ident">EntryCommitted</span><span class="op">&gt;</span> <span class="op">=</span> <span class="kw">match</span> <span class="kw-2">&amp;</span><span class="ident">de</span>.<span class="ident">ident</span>.<span class="ident">origin</span> {
             <span class="ident">IdentType::Internal</span> <span class="op">=</span><span class="op">&gt;</span> {
-                <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;Internal operation, bypassing access check&quot;</span>);
+                <span class="macro">trace!</span>(<span class="string">&quot;Internal operation, bypassing access check&quot;</span>);
                 <span class="comment">// No need to check ACS</span>
                 <span class="kw">return</span> <span class="prelude-val">Ok</span>(<span class="bool-val">true</span>);
             }
             <span class="ident">IdentType::User</span>(<span class="ident">u</span>) <span class="op">=</span><span class="op">&gt;</span> <span class="kw-2">&amp;</span><span class="ident">u</span>.<span class="ident">entry</span>,
         };
-        <span class="macro">lperf_segment!</span>(<span class="ident">audit</span>, <span class="string">&quot;access::delete_allow_operation&quot;</span>, <span class="op">|</span><span class="op">|</span> {
-            <span class="macro">ltrace!</span>(<span class="ident">audit</span>, <span class="string">&quot;Access check for delete event: {}&quot;</span>, <span class="ident">de</span>.<span class="ident">ident</span>);
+        <span class="macro">spanned!</span>(<span class="string">&quot;access::delete_allow_operation&quot;</span>, {
+            <span class="macro">trace!</span>(<span class="string">&quot;Access check for delete event: {}&quot;</span>, <span class="ident">de</span>.<span class="ident">ident</span>);
 
             <span class="comment">// Some useful references we&#39;ll use for the remainder of the operation</span>
             <span class="kw">let</span> <span class="ident">delete_state</span> <span class="op">=</span> <span class="self">self</span>.<span class="ident">get_delete</span>();
@@ -3624,14 +3398,13 @@
             <span class="kw">let</span> <span class="ident">related_acp</span>: <span class="ident">Vec</span><span class="op">&lt;</span>(<span class="kw-2">&amp;</span><span class="ident">AccessControlDelete</span>, <span class="kw">_</span>)<span class="op">&gt;</span> <span class="op">=</span> <span class="ident">delete_state</span>
                 .<span class="ident">iter</span>()
                 .<span class="ident">filter_map</span>(<span class="op">|</span><span class="ident">acs</span><span class="op">|</span> {
-                    <span class="kw">match</span> (<span class="kw-2">&amp;</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">receiver</span>).<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">de</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>)) {
+                    <span class="kw">match</span> <span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">receiver</span>.<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">de</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>)) {
                         <span class="prelude-val">Ok</span>(<span class="ident">f_res</span>) <span class="op">=</span><span class="op">&gt;</span> {
                             <span class="kw">if</span> <span class="ident">rec_entry</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>) {
-                                (<span class="kw-2">&amp;</span><span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">targetscope</span>)
+                                <span class="ident">acs</span>.<span class="ident">acp</span>.<span class="ident">targetscope</span>
                                     .<span class="ident">resolve</span>(<span class="kw-2">&amp;</span><span class="ident">de</span>.<span class="ident">ident</span>, <span class="prelude-val">None</span>, <span class="prelude-val">Some</span>(<span class="ident">acp_resolve_filter_cache</span>))
                                     .<span class="ident">map_err</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
-                                        <span class="macro">ladmin_error!</span>(
-                                            <span class="ident">audit</span>,
+                                        <span class="macro">admin_error!</span>(
                                             <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
                                             <span class="ident">e</span>
                                         );
@@ -3646,8 +3419,7 @@
                             }
                         }
                         <span class="prelude-val">Err</span>(<span class="ident">e</span>) <span class="op">=</span><span class="op">&gt;</span> {
-                            <span class="macro">ladmin_error!</span>(
-                                <span class="ident">audit</span>,
+                            <span class="macro">admin_error!</span>(
                                 <span class="string">&quot;A internal filter/event was passed for resolution!?!? {:?}&quot;</span>,
                                 <span class="ident">e</span>
                             );
@@ -3659,47 +3431,37 @@
 
             <span class="comment">/*
             related_acp.iter().for_each(|racp| {
-                lsecurity_access!(audit, &quot;Related acs -&gt; {:?}&quot;, racp.acp.name);
+                lsecurity_access!( &quot;Related acs -&gt; {:?}&quot;, racp.acp.name);
             });
             */</span>
 
             <span class="comment">// For each entry</span>
-            <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">entries</span>.<span class="ident">iter</span>().<span class="ident">fold</span>(<span class="bool-val">true</span>, <span class="op">|</span><span class="ident">acc</span>, <span class="ident">e</span><span class="op">|</span> {
-                <span class="kw">if</span> <span class="op">!</span><span class="ident">acc</span> {
-                    <span class="comment">// Any false, denies the whole operation.</span>
-                    <span class="bool-val">false</span>
-                } <span class="kw">else</span> {
-                    <span class="ident">related_acp</span>.<span class="ident">iter</span>().<span class="ident">fold</span>(<span class="bool-val">false</span>, <span class="op">|</span><span class="ident">r_acc</span>, (<span class="ident">acd</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
-                        <span class="kw">if</span> <span class="ident">r_acc</span> {
-                            <span class="comment">// If something allowed us to delete, skip doing silly work.</span>
-                            <span class="ident">r_acc</span>
-                        } <span class="kw">else</span> <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="kw-2">&amp;</span><span class="ident">f_res</span>) {
-                            <span class="macro">lsecurity_access!</span>(
-                                <span class="ident">audit</span>,
-                                <span class="string">&quot;entry {:?} matches acs {}&quot;</span>,
-                                <span class="ident">e</span>.<span class="ident">get_uuid</span>(),
-                                <span class="ident">acd</span>.<span class="ident">acp</span>.<span class="ident">name</span>
-                            );
-                            <span class="comment">// It matches, so we can delete this!</span>
-                            <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;passed&quot;</span>);
-                            <span class="bool-val">true</span>
-                        } <span class="kw">else</span> {
-                            <span class="macro">ltrace!</span>(
-                                <span class="ident">audit</span>,
-                                <span class="string">&quot;entry {:?} DOES NOT match acs {}&quot;</span>,
-                                <span class="ident">e</span>.<span class="ident">get_uuid</span>(),
-                                <span class="ident">acd</span>.<span class="ident">acp</span>.<span class="ident">name</span>
-                            );
-                            <span class="comment">// Does not match, fail.</span>
-                            <span class="bool-val">false</span>
-                        } <span class="comment">// else</span>
-                    }) <span class="comment">// fold related_acp</span>
-                } <span class="comment">// if/else</span>
+            <span class="kw">let</span> <span class="ident">r</span> <span class="op">=</span> <span class="ident">entries</span>.<span class="ident">iter</span>().<span class="ident">all</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> {
+                <span class="ident">related_acp</span>.<span class="ident">iter</span>().<span class="ident">any</span>(<span class="op">|</span>(<span class="ident">acd</span>, <span class="ident">f_res</span>)<span class="op">|</span> {
+                    <span class="kw">if</span> <span class="ident">e</span>.<span class="ident">entry_match_no_index</span>(<span class="ident">f_res</span>) {
+                        <span class="macro">security_access!</span>(
+                            <span class="ident">entry_uuid</span> <span class="op">=</span> <span class="question-mark">?</span><span class="ident">e</span>.<span class="ident">get_uuid</span>(),
+                            <span class="ident">acs</span> <span class="op">=</span> <span class="op">%</span><span class="ident">acd</span>.<span class="ident">acp</span>.<span class="ident">name</span>,
+                            <span class="string">&quot;entry matches acs&quot;</span>
+                        );
+                        <span class="comment">// It matches, so we can delete this!</span>
+                        <span class="macro">security_access!</span>(<span class="string">&quot;passed&quot;</span>);
+                        <span class="bool-val">true</span>
+                    } <span class="kw">else</span> {
+                        <span class="macro">trace!</span>(
+                            <span class="string">&quot;entry {:?} DOES NOT match acs {}&quot;</span>,
+                            <span class="ident">e</span>.<span class="ident">get_uuid</span>(),
+                            <span class="ident">acd</span>.<span class="ident">acp</span>.<span class="ident">name</span>
+                        );
+                        <span class="comment">// Does not match, fail.</span>
+                        <span class="bool-val">false</span>
+                    } <span class="comment">// else</span>
+                }) <span class="comment">// any related_acp</span>
             });
             <span class="kw">if</span> <span class="ident">r</span> {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;allowed ✅&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;allowed ✅&quot;</span>);
             } <span class="kw">else</span> {
-                <span class="macro">lsecurity_access!</span>(<span class="ident">audit</span>, <span class="string">&quot;denied ❌&quot;</span>);
+                <span class="macro">security_access!</span>(<span class="string">&quot;denied ❌&quot;</span>);
             }
             <span class="prelude-val">Ok</span>(<span class="ident">r</span>)
         })
@@ -3925,10 +3687,10 @@
     };
     <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::event</span>::{<span class="ident">CreateEvent</span>, <span class="ident">DeleteEvent</span>, <span class="ident">ModifyEvent</span>, <span class="ident">SearchEvent</span>};
     <span class="kw">use</span> <span class="kw">crate</span><span class="ident">::prelude</span>::<span class="kw-2">*</span>;
+    <span class="kw">use</span> <span class="ident">std::sync::Arc</span>;
 
     <span class="macro">macro_rules!</span> <span class="ident">acp_from_entry_err</span> {
         (
-            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">audit</span>:<span class="ident">expr</span>,
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">qs</span>:<span class="ident">expr</span>,
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>:<span class="ident">expr</span>,
             <span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ty</span>
@@ -3936,14 +3698,13 @@
             <span class="kw">let</span> <span class="ident">e1</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>);
             <span class="kw">let</span> <span class="ident">ev1</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">e1</span>.<span class="ident">into_sealed_committed</span>() };
 
-            <span class="kw">let</span> <span class="ident">r1</span> <span class="op">=</span> <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span><span class="macro-nonterminal">::try_from</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">audit</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">qs</span>, <span class="kw-2">&amp;</span><span class="ident">ev1</span>);
+            <span class="kw">let</span> <span class="ident">r1</span> <span class="op">=</span> <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span><span class="macro-nonterminal">::try_from</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">qs</span>, <span class="kw-2">&amp;</span><span class="ident">ev1</span>);
             <span class="macro">assert!</span>(<span class="ident">r1</span>.<span class="ident">is_err</span>());
         }};
     }
 
     <span class="macro">macro_rules!</span> <span class="ident">acp_from_entry_ok</span> {
         (
-            <span class="macro-nonterminal">$</span><span class="macro-nonterminal">audit</span>:<span class="ident">expr</span>,
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">qs</span>:<span class="ident">expr</span>,
             <span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>:<span class="ident">expr</span>,
             <span class="macro-nonterminal">$</span><span class="kw">type</span>:<span class="macro-nonterminal">ty</span>
@@ -3951,7 +3712,7 @@
             <span class="kw">let</span> <span class="ident">e1</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">e</span>);
             <span class="kw">let</span> <span class="ident">ev1</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">e1</span>.<span class="ident">into_sealed_committed</span>() };
 
-            <span class="kw">let</span> <span class="ident">r1</span> <span class="op">=</span> <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span><span class="macro-nonterminal">::try_from</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">audit</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">qs</span>, <span class="kw-2">&amp;</span><span class="ident">ev1</span>);
+            <span class="kw">let</span> <span class="ident">r1</span> <span class="op">=</span> <span class="op">&lt;</span><span class="macro-nonterminal">$</span><span class="kw">type</span><span class="op">&gt;</span><span class="macro-nonterminal">::try_from</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">qs</span>, <span class="kw-2">&amp;</span><span class="ident">ev1</span>);
             <span class="macro">assert!</span>(<span class="ident">r1</span>.<span class="ident">is_ok</span>());
             <span class="ident">r1</span>.<span class="ident">unwrap</span>()
         }};
@@ -3959,7 +3720,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_access_acp_parser</span>() {
-        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span>, <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span><span class="op">|</span> {
+        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span><span class="op">|</span> {
             <span class="comment">// Test parsing entries to acp. There so no point testing schema violations</span>
             <span class="comment">// because the schema system is well tested an robust. Instead we target</span>
             <span class="comment">// entry misconfigurations, such as missing classes required.</span>
@@ -3971,7 +3732,6 @@
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">qs_write</span> <span class="op">=</span> <span class="ident">qs</span>.<span class="ident">write</span>(<span class="ident">duration_from_epoch_now</span>());
 
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -3984,7 +3744,6 @@
             );
 
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -3997,7 +3756,6 @@
             );
 
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4013,7 +3771,6 @@
 
             <span class="comment">// &quot;\&quot;Self\&quot;&quot;</span>
             <span class="macro">acp_from_entry_ok!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4035,11 +3792,10 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_access_acp_delete_parser</span>() {
-        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span>, <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span><span class="op">|</span> {
+        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span><span class="op">|</span> {
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">qs_write</span> <span class="op">=</span> <span class="ident">qs</span>.<span class="ident">write</span>(<span class="ident">duration_from_epoch_now</span>());
 
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4058,7 +3814,6 @@
             );
 
             <span class="macro">acp_from_entry_ok!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4080,13 +3835,12 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_access_acp_search_parser</span>() {
-        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span>, <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span><span class="op">|</span> {
+        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span><span class="op">|</span> {
             <span class="comment">// Test that parsing search access controls works.</span>
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">qs_write</span> <span class="op">=</span> <span class="ident">qs</span>.<span class="ident">write</span>(<span class="ident">duration_from_epoch_now</span>());
 
             <span class="comment">// Missing class acp</span>
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4107,7 +3861,6 @@
 
             <span class="comment">// Missing class acs</span>
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4128,7 +3881,6 @@
 
             <span class="comment">// Missing attr acp_search_attr</span>
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4148,7 +3900,6 @@
 
             <span class="comment">// All good!</span>
             <span class="macro">acp_from_entry_ok!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4171,12 +3922,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_access_acp_modify_parser</span>() {
-        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span>, <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span><span class="op">|</span> {
+        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span><span class="op">|</span> {
             <span class="comment">// Test that parsing modify access controls works.</span>
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">qs_write</span> <span class="op">=</span> <span class="ident">qs</span>.<span class="ident">write</span>(<span class="ident">duration_from_epoch_now</span>());
 
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4198,7 +3948,6 @@
             );
 
             <span class="macro">acp_from_entry_ok!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4217,7 +3966,6 @@
             );
 
             <span class="macro">acp_from_entry_ok!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4242,12 +3990,11 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_access_acp_create_parser</span>() {
-        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span>, <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span><span class="op">|</span> {
+        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span><span class="op">|</span> {
             <span class="comment">// Test that parsing create access controls works.</span>
             <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">qs_write</span> <span class="op">=</span> <span class="ident">qs</span>.<span class="ident">write</span>(<span class="ident">duration_from_epoch_now</span>());
 
             <span class="macro">acp_from_entry_err!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4268,7 +4015,6 @@
             );
 
             <span class="macro">acp_from_entry_ok!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4287,7 +4033,6 @@
             );
 
             <span class="macro">acp_from_entry_ok!</span>(
-                <span class="ident">audit</span>,
                 <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>,
                 <span class="string">r#&quot;{
                     &quot;attrs&quot;: {
@@ -4311,7 +4056,7 @@
 
     <span class="attribute">#[<span class="ident">test</span>]</span>
     <span class="kw">fn</span> <span class="ident">test_access_acp_compound_parser</span>() {
-        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span>, <span class="ident">audit</span>: <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">AuditScope</span><span class="op">|</span> {
+        <span class="macro">run_test!</span>(<span class="op">|</span><span class="ident">qs</span>: <span class="kw-2">&amp;</span><span class="ident">QueryServer</span><span class="op">|</span> {
             <span class="comment">// Test that parsing compound access controls works. This means that</span>
             <span class="comment">// given a single &amp;str, we can evaluate all types from a single record.</span>
             <span class="comment">// This is valid, and could exist, IE a rule to allow create, search and modify</span>
@@ -4345,10 +4090,10 @@
                     }
                 }&quot;#</span>;
 
-            <span class="macro">acp_from_entry_ok!</span>(<span class="ident">audit</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>, <span class="ident">e</span>, <span class="ident">AccessControlCreate</span>);
-            <span class="macro">acp_from_entry_ok!</span>(<span class="ident">audit</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>, <span class="ident">e</span>, <span class="ident">AccessControlDelete</span>);
-            <span class="macro">acp_from_entry_ok!</span>(<span class="ident">audit</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>, <span class="ident">e</span>, <span class="ident">AccessControlModify</span>);
-            <span class="macro">acp_from_entry_ok!</span>(<span class="ident">audit</span>, <span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>, <span class="ident">e</span>, <span class="ident">AccessControlSearch</span>);
+            <span class="macro">acp_from_entry_ok!</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>, <span class="ident">e</span>, <span class="ident">AccessControlCreate</span>);
+            <span class="macro">acp_from_entry_ok!</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>, <span class="ident">e</span>, <span class="ident">AccessControlDelete</span>);
+            <span class="macro">acp_from_entry_ok!</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>, <span class="ident">e</span>, <span class="ident">AccessControlModify</span>);
+            <span class="macro">acp_from_entry_ok!</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">qs_write</span>, <span class="ident">e</span>, <span class="ident">AccessControlSearch</span>);
         })
     }
 
@@ -4364,11 +4109,9 @@
             <span class="ident">acw</span>.<span class="ident">update_search</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">controls</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to update&quot;</span>);
             <span class="kw">let</span> <span class="ident">acw</span> <span class="op">=</span> <span class="ident">acw</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">audit</span> <span class="op">=</span> <span class="ident">AuditScope::new</span>(<span class="string">&quot;test_acp_search&quot;</span>, <span class="ident">uuid::Uuid::new_v4</span>(), <span class="prelude-val">None</span>);
             <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">acw</span>
-                .<span class="ident">search_filter_entries</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">audit</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">se</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
+                .<span class="ident">search_filter_entries</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">se</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
                 .<span class="ident">expect</span>(<span class="string">&quot;op failed&quot;</span>);
-            <span class="ident">audit</span>.<span class="ident">write_log</span>();
             <span class="macro">debug!</span>(<span class="string">&quot;result --&gt; {:?}&quot;</span>, <span class="ident">res</span>);
             <span class="macro">debug!</span>(<span class="string">&quot;expect --&gt; {:?}&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">expect</span>);
             <span class="comment">// should be ok, and same as expect.</span>
@@ -4392,8 +4135,8 @@
         );
         <span class="kw">let</span> <span class="ident">ev1</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">e1</span>.<span class="ident">into_sealed_committed</span>() };
 
-        <span class="kw">let</span> <span class="ident">expect</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">ev1</span>.<span class="ident">clone</span>()];
-        <span class="kw">let</span> <span class="ident">entries</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">ev1</span>];
+        <span class="kw">let</span> <span class="ident">expect</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Arc::new</span>(<span class="ident">ev1</span>.<span class="ident">clone</span>())];
+        <span class="kw">let</span> <span class="ident">entries</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Arc::new</span>(<span class="ident">ev1</span>)];
 
         <span class="comment">// This acp basically is &quot;allow access to stuff, but not this&quot;.</span>
         <span class="macro">test_acp_search!</span>(
@@ -4421,12 +4164,12 @@
         <span class="kw">let</span> <span class="ident">e2</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="ident">JSON_TESTPERSON2</span>);
         <span class="kw">let</span> <span class="ident">ev2</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">e2</span>.<span class="ident">into_sealed_committed</span>() };
 
-        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">ev1</span>.<span class="ident">clone</span>(), <span class="ident">ev2</span>.<span class="ident">clone</span>()];
+        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Arc::new</span>(<span class="ident">ev1</span>.<span class="ident">clone</span>()), <span class="ident">Arc::new</span>(<span class="ident">ev2</span>.<span class="ident">clone</span>())];
 
         <span class="kw">let</span> <span class="ident">se_admin</span> <span class="op">=</span> <span class="kw">unsafe</span> {
             <span class="ident">SearchEvent::new_impersonate_entry_ser</span>(<span class="ident">JSON_ADMIN_V1</span>, <span class="macro">filter_all!</span>(<span class="ident">f_pres</span>(<span class="string">&quot;name&quot;</span>)))
         };
-        <span class="kw">let</span> <span class="ident">ex_admin</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">ev1</span>.<span class="ident">clone</span>()];
+        <span class="kw">let</span> <span class="ident">ex_admin</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Arc::new</span>(<span class="ident">ev1</span>.<span class="ident">clone</span>())];
 
         <span class="kw">let</span> <span class="ident">se_anon</span> <span class="op">=</span> <span class="kw">unsafe</span> {
             <span class="ident">SearchEvent::new_impersonate_entry_ser</span>(<span class="ident">JSON_ANONYMOUS_V1</span>, <span class="macro">filter_all!</span>(<span class="ident">f_pres</span>(<span class="string">&quot;name&quot;</span>)))
@@ -4466,14 +4209,13 @@
             <span class="ident">acw</span>.<span class="ident">update_search</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">controls</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to update&quot;</span>);
             <span class="kw">let</span> <span class="ident">acw</span> <span class="op">=</span> <span class="ident">acw</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">audit</span> <span class="op">=</span> <span class="ident">AuditScope::new</span>(<span class="string">&quot;test_acp_search_reduce&quot;</span>, <span class="ident">uuid::Uuid::new_v4</span>(), <span class="prelude-val">None</span>);
             <span class="comment">// We still have to reduce the entries to be sure that we are good.</span>
             <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">acw</span>
-                .<span class="ident">search_filter_entries</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">audit</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">se</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
+                .<span class="ident">search_filter_entries</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">se</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
                 .<span class="ident">expect</span>(<span class="string">&quot;operation failed&quot;</span>);
             <span class="comment">// Now on the reduced entries, reduce the entries attrs.</span>
             <span class="kw">let</span> <span class="ident">reduced</span> <span class="op">=</span> <span class="ident">acw</span>
-                .<span class="ident">search_filter_entry_attributes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">audit</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">se</span>, <span class="ident">res</span>)
+                .<span class="ident">search_filter_entry_attributes</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">se</span>, <span class="ident">res</span>)
                 .<span class="ident">expect</span>(<span class="string">&quot;operation failed&quot;</span>);
 
             <span class="comment">// Help the type checker for the expect set.</span>
@@ -4481,8 +4223,6 @@
                 .<span class="ident">into_iter</span>()
                 .<span class="ident">map</span>(<span class="op">|</span><span class="ident">e</span><span class="op">|</span> <span class="kw">unsafe</span> { <span class="ident">e</span>.<span class="ident">into_reduced</span>() })
                 .<span class="ident">collect</span>();
-
-            <span class="ident">audit</span>.<span class="ident">write_log</span>();
 
             <span class="macro">debug!</span>(<span class="string">&quot;expect --&gt; {:?}&quot;</span>, <span class="ident">expect_set</span>);
             <span class="macro">debug!</span>(<span class="string">&quot;result --&gt; {:?}&quot;</span>, <span class="ident">reduced</span>);
@@ -4504,7 +4244,7 @@
         <span class="comment">// class and uuid being present.</span>
         <span class="kw">let</span> <span class="ident">e1</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="ident">JSON_TESTPERSON1</span>);
         <span class="kw">let</span> <span class="ident">ev1</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">e1</span>.<span class="ident">into_sealed_committed</span>() };
-        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">ev1</span>.<span class="ident">clone</span>()];
+        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Arc::new</span>(<span class="ident">ev1</span>.<span class="ident">clone</span>())];
 
         <span class="kw">let</span> <span class="ident">ex1</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span>
             <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="ident">JSON_TESTPERSON1_REDUCED</span>);
@@ -4543,7 +4283,7 @@
         <span class="comment">// class and uuid being present.</span>
         <span class="kw">let</span> <span class="ident">e1</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="ident">JSON_TESTPERSON1</span>);
         <span class="kw">let</span> <span class="ident">ev1</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">e1</span>.<span class="ident">into_sealed_committed</span>() };
-        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">ev1</span>.<span class="ident">clone</span>()];
+        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Arc::new</span>(<span class="ident">ev1</span>.<span class="ident">clone</span>())];
 
         <span class="kw">let</span> <span class="ident">ex1</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span>
             <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="ident">JSON_TESTPERSON1_REDUCED</span>);
@@ -4589,12 +4329,10 @@
             <span class="ident">acw</span>.<span class="ident">update_modify</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">controls</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to update&quot;</span>);
             <span class="kw">let</span> <span class="ident">acw</span> <span class="op">=</span> <span class="ident">acw</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">audit</span> <span class="op">=</span> <span class="ident">AuditScope::new</span>(<span class="string">&quot;test_acp_modify&quot;</span>, <span class="ident">uuid::Uuid::new_v4</span>(), <span class="prelude-val">None</span>);
             <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">acw</span>
-                .<span class="ident">modify_allow_operation</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">audit</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">me</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
+                .<span class="ident">modify_allow_operation</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">me</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
                 .<span class="ident">expect</span>(<span class="string">&quot;op failed&quot;</span>);
 
-            <span class="ident">audit</span>.<span class="ident">write_log</span>();
             <span class="macro">debug!</span>(<span class="string">&quot;result --&gt; {:?}&quot;</span>, <span class="ident">res</span>);
             <span class="macro">debug!</span>(<span class="string">&quot;expect --&gt; {:?}&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">expect</span>);
             <span class="comment">// should be ok, and same as expect.</span>
@@ -4606,7 +4344,7 @@
     <span class="kw">fn</span> <span class="ident">test_access_enforce_modify</span>() {
         <span class="kw">let</span> <span class="ident">e1</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="ident">JSON_TESTPERSON1</span>);
         <span class="kw">let</span> <span class="ident">ev1</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">e1</span>.<span class="ident">into_sealed_committed</span>() };
-        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">ev1</span>.<span class="ident">clone</span>()];
+        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Arc::new</span>(<span class="ident">ev1</span>.<span class="ident">clone</span>())];
 
         <span class="comment">// Name present</span>
         <span class="kw">let</span> <span class="ident">me_pres</span> <span class="op">=</span> <span class="kw">unsafe</span> {
@@ -4753,12 +4491,10 @@
             <span class="ident">acw</span>.<span class="ident">update_create</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">controls</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to update&quot;</span>);
             <span class="kw">let</span> <span class="ident">acw</span> <span class="op">=</span> <span class="ident">acw</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">audit</span> <span class="op">=</span> <span class="ident">AuditScope::new</span>(<span class="string">&quot;test_acp_create&quot;</span>, <span class="ident">uuid::Uuid::new_v4</span>(), <span class="prelude-val">None</span>);
             <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">acw</span>
-                .<span class="ident">create_allow_operation</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">audit</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ce</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
+                .<span class="ident">create_allow_operation</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="macro-nonterminal">$</span><span class="macro-nonterminal">ce</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
                 .<span class="ident">expect</span>(<span class="string">&quot;op failed&quot;</span>);
 
-            <span class="ident">audit</span>.<span class="ident">write_log</span>();
             <span class="macro">debug!</span>(<span class="string">&quot;result --&gt; {:?}&quot;</span>, <span class="ident">res</span>);
             <span class="macro">debug!</span>(<span class="string">&quot;expect --&gt; {:?}&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">expect</span>);
             <span class="comment">// should be ok, and same as expect.</span>
@@ -4873,12 +4609,10 @@
             <span class="ident">acw</span>.<span class="ident">update_delete</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">controls</span>).<span class="ident">expect</span>(<span class="string">&quot;Failed to update&quot;</span>);
             <span class="kw">let</span> <span class="ident">acw</span> <span class="op">=</span> <span class="ident">acw</span>;
 
-            <span class="kw">let</span> <span class="kw-2">mut</span> <span class="ident">audit</span> <span class="op">=</span> <span class="ident">AuditScope::new</span>(<span class="string">&quot;test_acp_delete&quot;</span>, <span class="ident">uuid::Uuid::new_v4</span>(), <span class="prelude-val">None</span>);
             <span class="kw">let</span> <span class="ident">res</span> <span class="op">=</span> <span class="ident">acw</span>
-                .<span class="ident">delete_allow_operation</span>(<span class="kw-2">&amp;</span><span class="kw-2">mut</span> <span class="ident">audit</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">de</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
+                .<span class="ident">delete_allow_operation</span>(<span class="macro-nonterminal">$</span><span class="macro-nonterminal">de</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">entries</span>)
                 .<span class="ident">expect</span>(<span class="string">&quot;op failed&quot;</span>);
 
-            <span class="ident">audit</span>.<span class="ident">write_log</span>();
             <span class="macro">debug!</span>(<span class="string">&quot;result --&gt; {:?}&quot;</span>, <span class="ident">res</span>);
             <span class="macro">debug!</span>(<span class="string">&quot;expect --&gt; {:?}&quot;</span>, <span class="macro-nonterminal">$</span><span class="macro-nonterminal">expect</span>);
             <span class="comment">// should be ok, and same as expect.</span>
@@ -4890,7 +4624,7 @@
     <span class="kw">fn</span> <span class="ident">test_access_enforce_delete</span>() {
         <span class="kw">let</span> <span class="ident">e1</span>: <span class="ident">Entry</span><span class="op">&lt;</span><span class="ident">EntryInit</span>, <span class="ident">EntryNew</span><span class="op">&gt;</span> <span class="op">=</span> <span class="ident">Entry::unsafe_from_entry_str</span>(<span class="ident">JSON_TESTPERSON1</span>);
         <span class="kw">let</span> <span class="ident">ev1</span> <span class="op">=</span> <span class="kw">unsafe</span> { <span class="ident">e1</span>.<span class="ident">into_sealed_committed</span>() };
-        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">ev1</span>.<span class="ident">clone</span>()];
+        <span class="kw">let</span> <span class="ident">r_set</span> <span class="op">=</span> <span class="macro">vec!</span>[<span class="ident">Arc::new</span>(<span class="ident">ev1</span>.<span class="ident">clone</span>())];
 
         <span class="kw">let</span> <span class="ident">de_admin</span> <span class="op">=</span> <span class="kw">unsafe</span> {
             <span class="ident">DeleteEvent::new_impersonate_entry_ser</span>(
@@ -4924,4 +4658,6 @@
     }
 }
 </pre></div>
-</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="kanidm" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div><script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script></body></html>
+</section><section id="search" class="content hidden"></section><div id="rustdoc-vars" data-root-path="../../" data-current-crate="kanidm" data-search-index-js="../../search-index.js" data-search-js="../../search.js"></div>
+    <script src="../../main.js"></script><script src="../../source-script.js"></script><script src="../../source-files.js"></script>
+</body></html>
