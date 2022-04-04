@@ -1,1 +1,0 @@
-initSidebarItems({"enum":[["CodeChallengeMethod",""]],"struct":[["AccessTokenRequest",""],["AccessTokenResponse",""],["AuthorisationRequest",""],["ConsentRequest","We ask our user to consent to this Authorisation Request with the following data."],["ErrorResponse",""]]});
